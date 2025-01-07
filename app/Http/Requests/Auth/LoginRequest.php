@@ -28,9 +28,18 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
-        ];
+            'email' => [
+                'required',             // Make sure the email is provided
+                'string',               // Ensure it's a string
+                'email',                // Validate the format of the email address
+                'exists:users,email',   // Check if the email exists in the 'users' table (or 'admins' table for doctor login)
+            ],
+            'password' => [
+                'required',             // Ensure the password is provided
+                'string',               // Make sure it's a string
+                'min:8',                // Optionally, enforce a minimum length for the password
+            ],
+            ];
     }
 
     /**

@@ -30,39 +30,43 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-//        dd($request->all());
+        // Validate the input
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            // 'password_confirmation' => 'required|same:password',
-            'mobile' => 'required|unique:users,mobile',
-            'birthday' => 'required|string',
-            'diseases[]' => 'nullable',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8'],
+            'national_id' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'in:male,female'],
+            'phone_number' => ['nullable', 'string'], //'max:15'
+            'address' => ['nullable', 'string', 'max:255'],
+            'identity_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'], // Max size 2MB
         ]);
-        $status = 'sick';
-        if ($request->diseases == null){
-            $request->merge([
-               'status' => 'unsick',
-            ]);
+    
+        // Handle the uploaded identity image
+        $identityImagePath = null;
+        if ($request->hasFile('identity_image')) {
+            $identityImagePath = $request->file('identity_image')->store('identity_images', 'public');
         }
-
+    
+        // Create the user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make(123),
-            'mobile' => $request->post('mobile'),
-            'age' => $request->post('age'),
-            'gender' => $request->post('gender'),
-            'birthday' => $request->post('birthday'),
-            'status' => $status,
-            'diseases' => $request->post('diseases') == null ?  json_encode([]) : json_encode($request->post('diseases')),
+            'password' => Hash::make($request->password),
+            'national_id' => $request->national_id,
+            'gender' => $request->gender,
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
+            'identity_image' => $identityImagePath,
         ]);
-
+    
+        // Fire the Registered event
         event(new Registered($user));
-
+    
+        // Automatically log in the user
         Auth::login($user);
-
+    
+        // Redirect to the home page
         return redirect(RouteServiceProvider::HOME);
     }
-}
+}    

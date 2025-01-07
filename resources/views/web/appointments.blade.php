@@ -159,9 +159,63 @@
         </div> <!-- about-shape -->
     </section>
 
-    <!--====== ABOUT PAGE PART ENDS ======-->
 
-    <!--====== APPOINTMENT WORKING PART START ======-->
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+    <!--====== ABOUT PAGE PART ENDS ======-->
+    <section class="pt-80 pb-130">
+        <div class="container">
+            <div >
+                <!-- start project table -->
+                <div class="projects">
+                    <h2>Booked appointments</h2>
+                    <div class="responsive-table">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Message</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($appointments as $app)
+                                    <tr>
+                                        <td>{{ $app->doctor->name }}</td>
+                                        <td>{{ $app->doctor->specialization }}</td>
+                                        <td>{{ $app->date }}</td>
+                                        <td>{{ $app->time }}</td>
+                                        <td>{{ $app->message }}</td>
+                                        <td>
+                                            <form action="{{ route('appointments.destroy', $app->id) }}" method="post" class="delete">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!--====== APPOINTMENT WORKING PART START ======-->
 
     <section class="appointment-working pt-80 pb-130">
         <div class="container">
@@ -194,8 +248,20 @@
                                 <button type = "submit">Submit</button>
                             </form> --}}
 
-                            
-                            <form action="{{ route('appointments.store') }}" method="post">
+                            @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+                            <form action="{{ route('appointments.store') }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
@@ -212,6 +278,10 @@
                                     <div class="col-md-6">
                                         <div class="single-appointment-form">
                                             <input id="datepicker" name="date" type="text" placeholder="MM/DD/YY">
+                                            @error('date')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    
                                         </div> <!-- single-appointment-form -->
                                     </div>
                                     <div class="col-md-6">
@@ -221,7 +291,12 @@
                                                 @foreach($doctors as $doctor)
                                                     <option value="{{ $doctor->id }}"> {{ $doctor->name . ' - '.$doctor->specialization }} </option>
                                                 @endforeach
+                                                
                                             </select>
+                                            @error('doctor_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    
                                         </div> <!-- single-appointment-form -->
                                     </div>
 
@@ -232,6 +307,10 @@
 
                                         <div class="single-appointment-form">
                                             <input type="text" name="message" placeholder="Message" >
+                                            @error('message')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    
                                         </div>
                                     </div>
 
@@ -296,7 +375,7 @@
 
 
 
-
+ 
 
 
 

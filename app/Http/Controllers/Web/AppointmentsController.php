@@ -22,6 +22,8 @@ class AppointmentsController extends Controller
         return view('web.appointments', [
             'doctors' => $doctors,
             'newses' => $newses,
+            'appointments' => Appointments::where('user_id', Auth::user()->id)->get(),
+
         ]);
     }
 
@@ -38,34 +40,37 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
-            'doctor_id' => 'required|exists:admins,id',
-            'date' => 'required|date',
-            'message' => 'nullable|string|min:5|max:255',
+        // Validate the incoming request
+        $request->validate([
+            'doctor_id' => 'required|exists:admins,id', // Ensure doctor_id exists in admins table
+            'date' => 'required|date', // Ensure date is in a valid format
+            'message' => 'nullable|string|min:5|max:255', // Message can be optional but must adhere to limits if present
         ]);
- 
- 
-        // $appointment = new Appointments();
-        // $appointment->user_id = Auth::user()->id;
-        // $appointment->doctor_id = $request->input("doctor_id");
-        // $appointment->date = $request->input("date");
-        // $appointment->message = $request->input("message");
-        // $saved = $appointment->save();
-
-
-        $appointments = Appointments::create([
-            'user_id' => Auth::user()->id,
-            'doctor_id' => $request->post('doctor_id'),
-            'date' => $request->post('date'),
-            'message' => $request->post('message'),
-        ]);
-
-        // dd($request->all(),$saved);
-
- 
-        return redirect()->route('appointments.index')->with('success', 'Appointments booked!');
+    
+        try {
+            // Create a new appointment
+            $appointment = new Appointments();
+            $appointment->user_id = Auth::user()->id; // The authenticated user's ID
+            $appointment->doctor_id = $request->input("doctor_id");
+            $appointment->date = $request->input("date");
+            $appointment->message = $request->input("message");
+            
+            // Save the appointment to the database
+            $saved = $appointment->save();
+    
+            // If the save is successful, redirect to the appointments page
+            return redirect()->route('appointments.index')->with('success', 'Appointment booked!');
+    
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Catch any database-related exceptions and display the error message
+            // This will give you more insight into why the save failed
+            return back()->with('error', 'An error occurred while booking your appointment: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            // Catch other general exceptions
+            return back()->with('error', 'An unexpected error occurred: ' . $e->getMessage());
+        }
     }
-
+    
     /**
      * Display the specified resource.
      */

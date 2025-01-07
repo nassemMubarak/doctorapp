@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Appointments extends Model
 {
     use HasFactory;
+    protected $table = 'appointments'; // Add this line if your table name is 'appointments'
+
     
     protected $fillable = [
         'user_id', 'doctor_id',  'date', 'message'

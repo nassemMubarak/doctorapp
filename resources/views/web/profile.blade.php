@@ -107,7 +107,7 @@
                                             <input type="text" placeholder="select your diseases" readonly style="width: 100%;">
                                             <i class="fa-solid fa-chevron-up i"></i>
                                         </div>
-                                        <div class="sp-option hide">
+                                        {{-- <div class="sp-option hide">
                                             <div class="control">
                                                 <input type="checkbox" id="one"  name="diseases[]" value="nose_and_throttle" @if(in_array("nose_and_throttle", Json_decode($user->diseases))) checked @endif />
                                                 <label for="one">Nose and throat</label>
@@ -132,7 +132,7 @@
                                                 <input type="checkbox" id="six" name="diseases[]" value="other" @if(in_array("other", Json_decode($user->diseases))) checked @endif />
                                                 <label for="six">Other</label>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

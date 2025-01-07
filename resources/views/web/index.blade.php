@@ -166,10 +166,9 @@
         </div>
     </div>
 </div>
-<!-- end always caring -->
-
+{{-- <!-- end always caring --> --}}
 <!-- start book appointment -->
-<div class="book-appointment">
+{{-- <div class="book-appointment">
     <div class="container">
         <div class="left">
             <div class="text">
@@ -200,14 +199,16 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
+
+
+ 
+
+
+
 <!-- end book an appontment  -->
-
-<!-- start our doctor -->
-@include('web.pages.doctors')
-<!-- end our doctor -->
-
-<!-- start news -->
+ 
+{{-- <!-- start news -->
 <div class="news">
     <div class="container">
         <p>Better information, Better health</p>
@@ -231,45 +232,11 @@
             <i class="fa-solid fa-circle-chevron-up down"></i>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- end news -->
 
-<!-- start contact -->
-<div class="contact">
-    <div class="container">
-        <div class="text">
-            <p>Get in touch</p>
-            <h2>Contact</h2>
-        </div>
-        <div class="boxs">
-            <div class="box">
-                <i class="fa-solid fa-phone-volume"></i>
-                <p>Emergency</p>
-                <span>(+972) 0599876541</span>
-                <span>(+972) 0599877891</span>
-            </div>
-            <div class="box">
-                <i class="fa-solid fa-location-dot"></i>
-                <p>Location</p>
-                <span>Palestine - Gaza</span>
-                <span>9876 Some country</span>
-            </div>
-            <div class="box">
-                <i class="fa-solid fa-envelope"></i>
-                <p>Email</p>
-                <span>Medicalcare@gmil.com</span>
-                <span>myebstudios@gmail.com</span>
-            </div>
-            <div class="box">
-                <i class="fa-solid fa-clock"></i>
-                <p>Working Hours</p>
-                <span>Mon-Sat 09:00-19:00</span>
-                <span>Sunday Emergency only</span>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end contact --> --}}
+ 
+<!-- end contact --> 
 
 
 
@@ -332,6 +299,63 @@
         </div> <!-- single slider -->
     </div> <!-- slider active -->
 </section>
+
+
+<div class="book-appointment">
+    <div class="container">
+        <div class="row">
+            <!-- Left Side Text Section -->
+            <div class="col-md-6">
+                <div class="text">
+                    <h2>Free medical advice</h2>
+                    <p>
+                        Ask the Doctor for advice. Free medical advice Free medical advice Free medical advice
+                        Free medical advice Free medical advice Free medical advice Ask the Doctor for advice
+                        Free medical advice Free medical advice Free medical advice Free medical advice
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Right Side Form Section -->
+            <div class="col-md-6">
+                <form action="{{ route('messages.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Name" required value="{{ Auth::user()->name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required value="{{ Auth::user()->email }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" class="form-control" placeholder="Phone" required value="{{ Auth::user()->mobile }}" readonly>
+                    </div>
+                    <input type="hidden" name="user_id" required value="{{ Auth::user()->id }}">
+                    
+                    <div class="form-group">
+                        <i class="fa-solid fa-chevron-up i"></i>
+                        <select name="doctor_id" class="form-control" required>
+                            <option value="" disabled selected hidden>Doctor</option>
+                            @foreach($doctors as $doctor)
+                                <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" placeholder="Message" maxlength="100" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input style="width:100%;" type="file" name="file" class="form-control-file">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!--====== SLIDER PART ENDS ======-->
  

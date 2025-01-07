@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -18,9 +19,9 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create()
     {
-        return view('web.auth.register');
+         
     }
 
     /**
@@ -30,29 +31,33 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
+        // Validate the request
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'password_confirmation' => ['required', 'same:password'],
-            'phone_number' => ['required', 'numeric', 'min:9' ],
-            'city' => ['required', 'string'],
-            'street' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8'],
+            'specialty' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string'],
+            'address' => ['required', 'string', 'max:255'],
         ]);
-
-        $user = User::create([
+         // Create the doctor
+        $doctor = Admin::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'specialty' => $request->specialty,
+            'type' => 'doctor',
             'phone_number' => $request->phone_number,
-            'address' => $request->city .'-' . $request->street,
+            'address' => $request->address,
         ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
+ 
+        // Fire the Registered event
+        event(new Registered($doctor));
+    
+        // Automatically log in the doctor
+        Auth::login($doctor);
+    
+        // Redirect to the home page
         return redirect(RouteServiceProvider::HOME);
     }
-}
+    }
