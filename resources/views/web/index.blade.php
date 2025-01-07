@@ -493,7 +493,7 @@
                             <span>- Random Customer</span>
                         </div> <!-- testimonial content -->
                         <div class="testimonial-image">
-                            <img src="assets/images/testimonial.png" alt="testimonial">
+                            <img src="assets/images/testimonial.jpg" alt="testimonial">
                         </div>
                     </div> <!-- single testimonial -->
                     <div class="single-testimonial-two mt-60">
@@ -504,7 +504,7 @@
                             <span>- Random Customer</span>
                         </div> <!-- testimonial content -->
                         <div class="testimonial-image">
-                            <img src="assets/images/testimonial.png" alt="testimonial">
+                            <img src="assets/images/testimonial.jpg" alt="testimonial">
                         </div>
                     </div> <!-- single testimonial -->
                     <div class="single-testimonial-two mt-60">
@@ -515,7 +515,7 @@
                             <span>- Random Customer</span>
                         </div> <!-- testimonial content -->
                         <div class="testimonial-image">
-                            <img src="assets/images/testimonial.png" alt="testimonial">
+                            <img src="assets/images/testimonial.jpg" alt="testimonial">
                         </div>
                     </div> <!-- single testimonial -->
                 </div> <!-- testimonial active -->
