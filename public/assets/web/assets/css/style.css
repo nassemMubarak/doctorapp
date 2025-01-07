@@ -1,0 +1,1498 @@
+:root {
+    --main-color: #1F2B6C;
+    --secandary-color: #159EEC;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    overflow-x: hidden;
+}
+.containerhome{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display:flex ;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+/* start style login sectionn */
+.contener {
+    height: 100vh;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+
+.card-pop {
+    height: 220px;
+    width: 345px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 14px rgba(74, 58, 255, 0.03), 0px -2px 4px rgba(20, 20, 43, 0.12), 0px 12px 44px rgba(20, 20, 43, 0.34);
+    border-radius: 32px;
+    border: #170F49;
+}
+
+.card-pop h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 23px;
+    text-align: center;
+    color: #170F49;
+    padding-top: 30px;
+}
+
+.card-pop p {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: start;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin-top: 7px;
+    padding: 0 65px;
+}
+
+.card-pop button {
+    height: 24px;
+    width: 179px;
+    border-radius: 5px;
+    background: #BFD2F8;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: 0 83px;
+    border-color: transparent;
+}
+
+.card-pop .text1 {
+    margin-top: 1px;
+}
+
+.card-pop .text2 {
+    margin-top: 14px;
+}
+
+/* start login userr */
+.card-user {
+    width: 860;
+    height: 750px;
+}
+
+.card-user .section1 {
+    width: 680px;
+    background: #DBE6E7;
+}
+
+.card-user .section1 img {
+    height: 400px;
+    width: 520px;
+    margin-top: 67px;
+}
+
+.card-user .section1 .device {
+    height: 140px;
+    width: 600px;
+    margin: 0 25px 50px;
+    background: #FFFFFF;
+    opacity: 0.8;
+    backdrop-filter: blur(60px);
+    border-radius: 20px;
+}
+
+.card-user .section1 .device p {
+    height: 86px;
+    width: 357px;
+    padding: 38px 10px 16px 59px;
+    font: normal 700 13px/25px Poppins ;
+    letter-spacing: 0.02em;
+    color: #121212;
+    text-align: start;
+}
+
+.section2 {
+    width: 680px;
+}
+
+.section2 form {
+    width: 600px;
+}
+
+.left-form div {
+    margin-top: 25px;
+}
+.right-form{
+    margin-left: 20px;
+}
+.right-form div {
+    margin-top: 25px;
+}
+
+label {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: -0.02em;
+    color: #2D3748;
+}
+
+div .textbox {
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    margin-top: 10px;
+}
+div .diseases{
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+}div .diseases label{
+    margin-left: 10px;
+}
+section label{
+    color: #000000;
+}
+div .right-form button{
+    height: 48px;
+    width: 358px;
+    transform: translateX(-50%);
+    border-color: transparent;
+    border-radius: 5px ;
+    background-color: #BFD2F8;
+    margin-top: 35px;
+    color: #1F2B6C;
+}
+.btn-log, .btn-back{
+    height: 48px;
+    width: 300px;
+    border-color: transparent;
+    border-radius: 5px ;
+    background-color: #BFD2F8;
+    margin-top: 30px;
+}
+/* start style headerr */
+
+/* start card sectionn */
+.title-head {
+    font: normal 400 32px/37px Yeseva One;
+    text-align: start;
+    margin-top: 40px;
+    color: var(--main-color);
+}
+
+.item {
+    height: 240px;
+    width: 317px;
+    left: 62px;
+    top: 461px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-top: 54px;
+
+}
+
+.card-title {
+    font: normal 700 18px/21px Work Sans;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 34px;
+    color: var(--secandary-color);
+}
+
+.item .content {
+    font: normal 400 18px/140% Work Sans;
+    margin: 21px 38px 75px 47px;
+}
+
+div .info,
+.info-box {
+    width: 1366px;
+    height: 441px;
+}
+
+.info-box {
+    background-color: var(--main-color);
+    opacity: 0.6;
+    transform: translateY(-441px);
+    font: normal 400 22px/30.8px Work Sans;
+    text-align: center;
+    color: #FCFEFE;
+    padding: 134px 354px 183px;
+}
+
+.big-box {
+    transform: translateY(-50px);
+}
+
+.info i {
+    font-size: 50px;
+    margin-bottom: 64px 0 40px;
+}
+
+.border {
+    border: 1px solid #090a0c;
+    width: 221.5px;
+    margin-top: 20px;
+    transform: translateX(220px);
+}
+
+div.info-box p.Paracelsus {
+    font: normal 400 22px/140% Work Sans;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.circal {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #FCFEFE;
+    margin: 0 5px;
+}
+
+.topic1 {
+    font: normal 700 18px/21px Work Sans;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--secandary-color);
+    margin-top: 151px;
+}
+
+.topic2 {
+    font: normal 400 32px/37px Yeseva One;
+    text-align: center;
+    color: var(--main-color);
+    margin-top: 8px;
+}
+
+.row {
+    margin-top: 64px;
+}
+
+.department {
+    width: 248px;
+    height: 172px;
+    border: 0.15px solid rgba(0, 0, 0, 0.19);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-color);
+}
+
+.department .data {
+    text-align: center;
+}
+
+.department:hover {
+    background: #1F2B6C;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color: #BFD2F8;
+}
+
+/* start doctor sectionn */
+.doctor {
+    height: 538px;
+    width: 317px;
+    margin-right: 20px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.details {
+    height: 142px;
+    width: 317px;
+    background-color: #BFD2F8;
+}
+
+.dr {
+    font: normal 400 18px/140% Work Sans;
+    color: var(--main-color);
+    transform: translateY(24px);
+}
+
+.dr-name {
+    font: normal 700 18px/21px Work Sans;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--main-color);
+    transform: translateY(8px);
+}
+
+.profile {
+    height: 46px;
+    width: 317px;
+    background: var(--main-color);
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile a {
+    font: normal 400 16px/140% Work Sans;
+    color: #BFD2F8;
+}
+
+.details .sochal-media i {
+    margin: 16px 10px 0 10px;
+    height: 24px;
+    width: 24px;
+    color: white;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #BFD2F8;
+    margin: 32px 5px 0 5px;
+}
+
+.circle:hover {
+    background-color: var(--main-color);
+}
+
+.contact-box {
+    height: 233px;
+    width: 233px;
+    border-radius: 8px;
+    margin: 0 10px;
+    background-color: #BFD2F8;
+}
+
+/* start  style of services page */
+
+/* .services {
+    height: 484px;
+    width: 350px;
+    border-radius: 5px;
+    border-radius: 5px;
+    margin-right: 21px;
+}
+
+
+.services .serv {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    width: 240px;
+    font: normal 400 16px/140% Work Sans;
+    color: #212124;
+    padding-left: 32px;
+}
+
+.services .active {
+    background-color: #1F2B6C;
+    color: #BFD2F8;
+}
+
+.services .serv:hover {
+    background-color: var(--main-color);
+    color: #c8f8bf;
+}
+
+.services .serv i,
+.services .serv img {
+    margin-right: 8px;
+    font-size: 32px;
+    color: var(--secandary-color);
+}
+
+.care-section .sup-head {
+    font: normal 400 32px/37px Yeseva One;
+    color: var(--main-color);
+    margin-top: 30px;
+}
+
+.item-care {
+    display: flex;
+    align-items: center;
+    font: normal 400 18px/140% Work Sans;
+}
+
+.dot {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: var(--secandary-color);
+    margin: 0 5px;
+}
+
+.care-section .content-paragraph {
+
+    width: 731px;
+    height: 132px;
+    font: normal 400 16px/140% Work Sans;
+    color: #000000;
+    margin-top: 24px;
+} */
+/* contact + footer sectionn */
+
+.box {
+    height: 233px;
+    width: 233px;
+    border-radius: 8px;
+    margin: 0 10px;
+    padding-top: 62px;
+    background-color: #bfd2f8;
+    color: var(--main-color);
+    padding: 25px;
+}
+
+div .box i {
+    font-size: 40px;
+    padding-top: 30px;
+}
+
+div .box h4 {
+    font: normal 700 18px/21px Work Sans;
+    margin-top: 26.5px;
+    text-transform: uppercase;
+}
+
+div .box span {
+    font: normal 400 16px/140% Work Sans;
+    margin-top: 8px;
+}
+
+div .box:hover {
+    background-color: var(--main-color);
+    color: #BFD2F8;
+}
+
+/* start style of footerr */
+
+.Learn_More_link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ .unList {
+    list-style-type: disc ;
+    color: #159EEC;
+}
+  .ul .unList li{
+    font-size: medium;
+  }
+  .imgSction img{
+    display :inline;
+    margin-right: 25px;
+  }
+  .container .unList{
+    font-size: 20px;
+    display: inline-table;
+    margin-left: 30px;
+  }
+  /* sacascas */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+:focus{
+  outline: none;
+}
+  html {
+  scroll-behavior: smooth;
+}
+input{
+    border: none;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+@media (min-width: 768px) {
+    .container {
+    width: 760px;
+    }
+}
+  /* Medium */
+@media (min-width: 992px) {
+    .container {
+    width: 970px;
+    }
+}
+  /* Large */
+@media (min-width: 1200px) {
+    .container {
+    width: 1170px;
+    }
+}
+.book-appointment{
+    background:linear-gradient(to top, #ffffffab 100% , #fcfefc91 80% ) , url(../images/Rectangle\ 33.png);
+    background-size: cover;
+    min-height:573px;
+    position: relative;
+    margin-top: 64px;
+    width: 100%;
+}
+.book-appointment .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width: 767px){
+    .book-appointment .container{
+        display: flex;
+        flex-direction: column;
+        gap: 150px;
+    }
+}
+.book-appointment .container .left{
+    width: 407px;
+    margin-top: 190px;
+}
+@media (max-width: 767px){
+    .book-appointment .container .left{
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+.book-appointment .container .left h2{
+font-family: 'Yeseva One';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 37px;
+color: #159EEC;
+margin-bottom: 16px ;
+}
+.book-appointment .container .left p{
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #212124;
+}
+.book-appointment .container .right{
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+    margin-top: 64px;
+}
+.book-appointment .container .right form{
+    border-radius: 5px;
+    overflow: hidden;
+    width: 490px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1px;
+}
+@media (max-width: 767px){
+    .book-appointment .container .right{
+        margin-top: -100px;
+    }
+    .book-appointment .container .right form{
+        width: 100%;
+        background-color: #7783c7;
+    }
+}
+.book-appointment .container .right form input,
+.book-appointment .container .right form select{
+    width: 244px;
+    height: 50px;
+    background-color:#1F2B6C;
+    padding-left: 20px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FCFEFE;
+    border: none;
+    outline: none;
+}
+
+.book-appointment .container .right form select{
+    appearance: none;
+    position: relative;
+}
+.book-appointment .container .right form input:focus::placeholder{
+    opacity: 0;
+}
+.book-appointment .container .right form input::placeholder,
+.book-appointment .container .right form textarea::placeholder{
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FCFEFE;
+}
+
+.book-appointment .container .right form input[type="date"],
+.book-appointment .container .right form input[type="time"]{
+padding-left: 20px;
+font-family: 'Work Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+color: #FCFEFE;
+}
+
+::-webkit-calendar-picker-indicator{
+    opacity: 0;
+    z-index: 100;
+    padding-left: 20px;
+    height: 40px;
+}
+.book-appointment .container .right form div{
+    position: relative;
+}
+.book-appointment .container .right form div i,
+form div select i{
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    z-index: 1;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+
+.book-appointment .container .right form select option{
+    background-color: #2873ff;
+    width: 50%;
+}
+
+
+.book-appointment .container .right form textarea{
+    width: 100%;
+    height: 190px;
+    background-color:#1F2B6C;
+    resize: none;
+    padding: 20px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FCFEFE;
+}
+@media (max-width: 767px){
+    .book-appointment .container .right form input{
+        width: 100%;
+    }
+}
+@media (max-width: 767px){
+    .book-appointment .container .right form textarea{
+        width: 100%;
+    }
+}
+@media (max-width: 767px){
+    .book-appointment .container .right form div,
+    .book-appointment .container .right form select{
+        width: 100%;
+    }
+}
+
+.book-appointment .container .right form input[type="submit"]{
+    width: 100%;
+    background: #BFD2F8;
+    border-radius: 0px 0px 5px 5px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1F2B6C;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    cursor: pointer;
+}
+
+/* -----------------------4th project ------------------- */
+
+:root {
+    --main-color: #1F2B6C;
+    --secandary-color: #159EEC;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    overflow-x: hidden;
+}
+
+/* start style login sectionn */
+.contener {
+    height: 100vh;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+
+.card-pop {
+    height: 220px;
+    width: 345px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 14px rgba(74, 58, 255, 0.03), 0px -2px 4px rgba(20, 20, 43, 0.12), 0px 12px 44px rgba(20, 20, 43, 0.34);
+    border-radius: 32px;
+    border: #170F49;
+}
+
+.card-pop h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 23px;
+    text-align: center;
+    color: #170F49;
+    padding-top: 30px;
+}
+
+.card-pop p {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: start;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin-top: 7px;
+    padding: 0 65px;
+}
+
+.card-pop button {
+    height: 24px;
+    width: 179px;
+    border-radius: 5px;
+    background: #BFD2F8;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: 0 83px;
+    border-color: transparent;
+}
+
+.card-pop .text1 {
+    margin-top: 1px;
+}
+
+.card-pop .text2 {
+    margin-top: 14px;
+}
+
+/* start login userr */
+.card-user {
+    width: 860;
+    height: 750px;
+}
+
+.card-user .section1 {
+    width: 680px;
+    background: #DBE6E7;
+}
+
+.card-user .section1 img {
+    height: 400px;
+    width: 520px;
+    margin-top: 67px;
+}
+
+.card-user .section1 .device {
+    height: 140px;
+    width: 600px;
+    margin: 0 25px 50px;
+    background: #FFFFFF;
+    opacity: 0.8;
+    backdrop-filter: blur(60px);
+    border-radius: 20px;
+}
+
+.card-user .section1 .device p {
+    height: 86px;
+    width: 357px;
+    padding: 38px 10px 16px 59px;
+    font: normal 700 13px/25px Poppins ;
+    letter-spacing: 0.02em;
+    color: #121212;
+    text-align: start;
+}
+
+.section2 {
+    width: 680px;
+}
+
+.section2 form {
+    width: 600px;
+}
+
+.left-form div {
+    margin-top: 25px;
+}
+.right-form{
+    margin-left: 20px;
+}
+.right-form div {
+    margin-top: 25px;
+}
+
+label {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: -0.02em;
+    color: #2D3748;
+}
+
+div .textbox {
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    margin-top: 10px;
+}
+div .diseases{
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+}div .diseases label{
+    margin-left: 10px;
+}
+section label{
+    color: #000000;
+}
+div .right-form button{
+    height: 48px;
+    width: 358px;
+    transform: translateX(-50%);
+    border-color: transparent;
+    border-radius: 5px ;
+    background-color: #BFD2F8;
+    margin-top: 35px;
+    color: #1F2B6C;
+}
+.btn-log, .btn-back{
+    height: 48px;
+    width: 300px;
+    border-color: transparent;
+    border-radius: 5px ;
+    background-color: #BFD2F8;
+    margin-top: 30px;
+}
+/* start style headerr */
+.navbar {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+.main-btn {
+    padding: 13px 35px 13px 35px;
+    width: 112px;
+    height: 45px;
+    background: #BFD2F8;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    color: var(--main-color);
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+.img-header,
+.transbox {
+    height: 250px;
+    width: 1366px;
+    transform: translateY(40px);
+}
+.navbar-brand,.navbar-logo {
+    font: normal 400 36px/42px Yeseva One;
+    text-align: left;
+    color: white;
+}
+.nav-item {
+    font: normal 400 18px/21px Work Sans;
+    margin: 0 25px;
+    list-style: none;
+}
+
+.nav-item:hover {
+    background-color: var(--secandary-color);
+    border-radius: 5px;
+    color: var(--main-color);
+}
+.nav-link {
+    color: white;
+}
+.transbox {
+    height: 239px;
+    width: 1366px;
+    background-color: rgb(255, 255, 255, 0.5);
+    transform: translateY(-210px);
+    display: flex;
+    align-items: center;
+}
+
+.transbox p {
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 55px;
+    color: var(--main-color);
+    padding-left: 186px;
+}
+
+/* start card sectionn */
+.title-head {
+    font: normal 400 32px/37px Yeseva One;
+    text-align: start;
+    margin-top: 40px;
+    color: var(--main-color);
+}
+
+.item {
+    height: 240px;
+    width: 317px;
+    left: 62px;
+    top: 461px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-top: 54px;
+
+}
+
+.card-title {
+    font: normal 700 18px/21px Work Sans;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 34px;
+    color: var(--secandary-color);
+}
+
+.item .content {
+    font: normal 400 18px/140% Work Sans;
+    margin: 21px 38px 75px 47px;
+}
+
+div .info,
+.info-box {
+    width: 1366px;
+    height: 441px;
+}
+
+.info-box {
+    background-color: var(--main-color);
+    opacity: 0.6;
+    transform: translateY(-441px);
+    font: normal 400 22px/30.8px Work Sans;
+    text-align: center;
+    color: #FCFEFE;
+    padding: 134px 354px 183px;
+}
+
+.big-box {
+    transform: translateY(-50px);
+}
+
+.info i {
+    font-size: 50px;
+    margin-bottom: 64px 0 40px;
+}
+
+.border {
+    border: 1px solid #090a0c;
+    width: 221.5px;
+    margin-top: 20px;
+    transform: translateX(220px);
+}
+
+div.info-box p.Paracelsus {
+    font: normal 400 22px/140% Work Sans;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.circal {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #FCFEFE;
+    margin: 0 5px;
+}
+
+.topic1 {
+    font: normal 700 18px/21px Work Sans;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--secandary-color);
+    margin-top: 151px;
+}
+
+.topic2 {
+    font: normal 400 32px/37px Yeseva One;
+    text-align: center;
+    color: var(--main-color);
+    margin-top: 8px;
+}
+
+.row {
+    margin-top: 64px;
+}
+
+.department {
+    width: 248px;
+    height: 172px;
+    border: 0.15px solid rgba(0, 0, 0, 0.19);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-color);
+}
+
+.department .data {
+    text-align: center;
+}
+
+.department:hover {
+    background: #1F2B6C;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color: #BFD2F8;
+}
+
+/* start doctor sectionn */
+/* .doctor {
+    height: 538px;
+    width: 317px;
+    margin-right: 20px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.details {
+    height: 142px;
+    width: 317px;
+    background-color: #BFD2F8;
+}
+
+.dr {
+    font: normal 400 18px/140% Work Sans;
+    color: var(--main-color);
+    transform: translateY(24px);
+}
+
+.dr-name {
+    font: normal 700 18px/21px Work Sans;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--main-color);
+    transform: translateY(8px);
+}
+
+.profile {
+    height: 46px;
+    width: 317px;
+    background: var(--main-color);
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile a {
+    font: normal 400 16px/140% Work Sans;
+    color: #BFD2F8;
+}
+
+.details .sochal-media i,
+footer .sochal-media i {
+    margin: 16px 10px 0 10px;
+    height: 24px;
+    width: 24px;
+    color: white;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #BFD2F8;
+    margin: 32px 5px 0 5px;
+}
+
+.circle:hover {
+    background-color: var(--main-color);
+}
+
+.contact-box {
+    height: 233px;
+    width: 233px;
+    border-radius: 8px;
+    margin: 0 10px;
+    background-color: #BFD2F8;
+} */
+
+
+
+
+
+
+/* start our doctor  */
+.our-doctor .container{
+    position: relative;
+    /* background-color: #abd8f1; */
+    height:800px;
+    overflow: hidden;
+
+}
+.our-doctor .container .left{
+    position: relative;
+    margin-top: -30px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    text-align: center;
+    gap:20px ;
+    width: 1000px;
+    overflow-x: scroll;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top:40px ;
+}
+@media (max-width: 767px){
+    .our-doctor .container .left {
+        width: 318px;
+    }
+    }
+.our-doctor .container .left::-webkit-scrollbar{
+    display: none;
+}
+.our-doctor .container p{
+    margin-top: 60px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #159EEC;
+}
+.our-doctor .container h2{
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 37px;
+    text-align: center;
+    color: #1F2B6C;
+    margin-top:8px ;
+}
+.our-doctor .container .left .doctor-img{
+    background: #BFD2F8;
+    width: 317px;
+    overflow: hidden;
+    border-radius: 10px 10px 5px 5px;
+    flex: none;
+    position: relative;
+    cursor: pointer;
+  }
+  .our-doctor .container .left .doctor-img .img{
+  width: 100%;
+  height: 350px;
+  }
+
+  .our-doctor .container .left .doctor-img p{
+  font-size: 18px;
+  line-height: 140%;
+  color: #1F2B6C;
+  width: 100%;
+  margin-top: 24px;
+  text-align: center;
+  }
+  .our-doctor .container .left .doctor-img h3{
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1F2B6C;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  }
+  .our-doctor .container .left .doctor-img .icon{
+  margin-top: 16px;
+  width: 100%;
+  text-align: center;
+  }
+  .our-doctor .container .left .doctor-img .icon i{
+  background: #1F2B6C;
+  border-radius: 50%;
+  padding: 5px 7px;
+  color: white;
+  cursor: pointer;
+  }
+  .container .left .doctor-img .icon i:nth-child(2){
+  margin: 0 24px;
+  }
+ .container .left .doctor-img span{
+  width: 100%;
+  height: 46px;
+  background: #1F2B6C;
+  margin-top: 24px;
+  display: block;
+  text-align: center;
+  padding-top: 12px;
+  color: #BFD2F8;
+  font-size: 16px;
+  cursor: pointer;
+  }
+
+  .container .left .doctor-img .choos{
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  }
+
+  .our-doctor .container .leftt,
+  .our-doctor .container .right{
+      font-size: 60px;
+      position:absolute;
+      top: 740px;
+      color:#1F2B6C ;
+      z-index: 100;
+  }
+  .our-doctor .container .leftt{
+    left:50%;
+    transform: translateX(-120%);
+}
+.our-doctor .container .right{
+    left: 50% ;
+    transform: translateX(25%);
+  }
+
+/* end our doctor  */
+
+
+
+
+
+
+
+/* start  style of services page */
+
+.services {
+    height: 484px;
+    width: 240px;
+    /* border-radius: 5px; */
+    background: #FCFEFE;
+    border: 1px solid #1f2b6c21;
+    margin-right: 21px;
+}
+@media (max-width: 767px){
+    .services {
+        width: 100%;
+    }
+}
+.services .serv {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    width: 240px;
+    font: normal 400 16px/140% Work Sans;
+    color: #212124;
+    padding-left: 32px;
+}
+@media (max-width: 767px){
+    .services .serv{
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.services .active {
+    background-color: #1F2B6C;
+    color: #BFD2F8;
+}
+
+.services .serv:hover {
+    background-color: var(--main-color);
+    color: #c8f8bf;
+}
+
+.services .serv i,
+.services .serv img {
+    margin-right: 8px;
+    font-size: 32px;
+    color: var(--secandary-color);
+}
+
+.care-section .sup-head {
+    font: normal 400 32px/37px Yeseva One;
+    color: var(--main-color);
+    margin-top: 30px;
+}
+
+.item-care {
+    display: flex;
+    align-items: center;
+    font: normal 400 18px/140% Work Sans;
+}
+
+.dot {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: var(--secandary-color);
+    margin: 0 5px;
+}
+
+.care-section .content-paragraph {
+    width: 731px;
+    height: 132px;
+    font: normal 400 16px/140% Work Sans;
+    color: #000000;
+    margin-top: 24px;
+}
+@media (max-width: 767px){
+     .care-section .content-paragraph{
+        width: 100%;
+        height: fit-content;
+    }
+}
+
+/* contact + footer sectionn */
+
+.box {
+    height: 233px;
+    width: 233px;
+    border-radius: 8px;
+    margin: 0 10px;
+    padding-top: 62px;
+    background-color: #bfd2f8;
+    color: var(--main-color);
+    padding: 25px;
+}
+
+div .box i {
+    font-size: 40px;
+    padding-top: 30px;
+}
+
+div .box h4 {
+    font: normal 700 18px/21px Work Sans;
+    margin-top: 26.5px;
+    text-transform: uppercase;
+}
+
+div .box span {
+    font: normal 400 16px/140% Work Sans;
+    margin-top: 8px;
+}
+
+div .box:hover {
+    background-color: var(--main-color);
+    color: #BFD2F8;
+}
+.style{
+    margin-top: 139px;
+}
+
+.style .care-section img{
+    height: 454px;
+    width: 731px;
+}
+.care-section .row{
+    margin-top: 24px;
+    width: 790px; 
+}
+@media (max-width: 767px){
+    .style{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+        margin-top: 40px;
+        /* overflow: hidden; */
+    }
+    .style .care-section{
+        width: 100%;
+    }
+    .sup-head{
+        width: 100%;
+    }
+    .style .care-section img{
+        width: 100%;
+        object-fit: cover;
+        object-position: top center;
+    }
+    .style .care-section .row{
+        width: 100%;
+        margin-top: 0;
+    }
+    .style .care-section .item-care{
+        max-width: 100%;
+        padding-right: 10px;
+    }
+   
+}
+/* start style of footerr */
