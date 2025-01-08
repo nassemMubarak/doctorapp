@@ -15,73 +15,117 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form class="form" action="{{ route('categories.update', $category->id) }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                @method('put')
-                                <div class="card-body">
+                            <div class="modal-body">
+                                <form action="{{ route('admin.users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                            
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-3">{{ __('Image') }}</label>
-                                        <div class="col-lg-6">
-                                            <div class="image-input image-input-outline" id="kt_image_1">
-                                                <div class="image-input-wrapper"
-                                                     style="background-image: url({{ $category->image_path }});
-                                                            width: 120px;
-                                                            height: 120px;"></div>
-                                                <label
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="change" data-toggle="tooltip" title=""
-                                                    data-original-title="Add Image">
-                                                    <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="image" accept=".png, .jpg, .jpeg"/>
-                                                    <input type="hidden" name="image_remove"/>
-                                                </label>
-                                                <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="cancel" data-toggle="tooltip" title="Remove Image">
-                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row ">
-                                        <label class="col-form-label col-lg-3">{{ __('Category Name') }}</label>
-                                        <div class="col-lg-6">
-                                            <input type="text"
-                                                   class="form-control form-control-solid @error('name')  is-invalid @enderror"
-                                                   name="name" value="{{ old('name', $category->name) }}"
-                                                   placeholder="category name..."/>
+                                        <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control form-control-solid @error('name') is-invalid @enderror" 
+                                                   name="name" value="{{ old('name', $user->name) }}" placeholder="Name..."/>
                                             @error('name')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row ">
-                                        <label class="col-form-label col-lg-3">{{ __('Description') }}</label>
-                                        <div class="col-lg-6">
-                                            <textarea type="text"
-                                                      class="form-control form-control-solid @error('description')  is-invalid @enderror"
-                                                      name="description" value="{{ old('desc') }}"
-                                                      placeholder="write a short description...">{{ $category->description }}</textarea>
-                                            @error('description')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                            
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="email" class="form-control form-control-solid @error('email') is-invalid @enderror"
+                                                   name="email" value="{{ old('email', $user->email) }}" placeholder="Email..."/>
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-9 ml-lg-auto">
-                                            <button type="submit" class="btn btn-primary font-weight-bold mr-2">Save
-                                            </button>
-                                            <button type="submit" class="btn btn-light-primary font-weight-bold">
-                                                Cancel
-                                            </button>
+                            
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Password') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="password" class="form-control form-control-solid @error('password') is-invalid @enderror" 
+                                                   name="password" placeholder="Password"/>
+                                            @error('password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
+                            
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Confirm Password') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="password" class="form-control form-control-solid @error('password_confirmation') is-invalid @enderror"
+                                                   name="password_confirmation" placeholder="Confirm password"/>
+                                            @error('password_confirmation')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Gender') }}</label>
+                                        <div class="col-lg-9">
+                                            <select name="gender" class="form-control form-control-solid">
+                                                <option value="male" {{ (old('gender', $user->gender) == 'male') ? 'selected' : '' }}>Male</option>
+                                                <option value="female" {{ (old('gender', $user->gender) == 'female') ? 'selected' : '' }}>Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('National ID') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control @error('national_id') is-invalid @enderror" 
+                                                   name="national_id" value="{{ old('national_id', $user->national_id) }}" placeholder="National ID...">
+                                            @error('national_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Phone Number') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="tel" class="form-control @error('phone_number') is-invalid @enderror" 
+                                                   name="phone_number" value="{{ old('phone_number', $user->phone_number) }}" placeholder="Phone number...">
+                                            @error('phone_number')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Address') }}</label>
+                                        <div class="col-lg-9">
+                                            <textarea class="form-control @error('address') is-invalid @enderror" 
+                                                      name="address" placeholder="Address...">{{ old('address', $user->address) }}</textarea>
+                                            @error('address')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Identity Image') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="file" class="form-control @error('identity_image') is-invalid @enderror" 
+                                                   name="identity_image" accept=".jpg, .jpeg, .png">
+                                            @error('identity_image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            
+                                    <div class="form-group row">
+                                        <div class="col-lg-9 offset-lg-3">
+                                            <button type="submit" class="btn btn-primary">{{ __('Update User') }}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                                                    </div>
                         <!-- /.card -->
                     </div>
                     <!--/.col (left) -->

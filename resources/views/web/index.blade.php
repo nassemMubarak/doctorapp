@@ -301,60 +301,129 @@
 </section>
 
 
-<div class="book-appointment">
+<div class="book-appointment py-5">
     <div class="container">
-        <div class="row">
-            <!-- Left Side Text Section -->
-            <div class="col-md-6">
-                <div class="text">
-                    <h2>Free medical advice</h2>
-                    <p>
-                        Ask the Doctor for advice. Free medical advice Free medical advice Free medical advice
-                        Free medical advice Free medical advice Free medical advice Ask the Doctor for advice
-                        Free medical advice Free medical advice Free medical advice Free medical advice
-                    </p>
-                </div>
-            </div>
-            
+        <div class="row g-5 align-items-center">
+            <!-- Left Side Text Section -->            
             <!-- Right Side Form Section -->
-            <div class="col-md-6">
-                <form action="{{ route('messages.store') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Name" required value="{{ Auth::user()->name }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Email" required value="{{ Auth::user()->email }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="phone" class="form-control" placeholder="Phone" required value="{{ Auth::user()->mobile }}" readonly>
-                    </div>
-                    <input type="hidden" name="user_id" required value="{{ Auth::user()->id }}">
-                    
-                    <div class="form-group">
-                        <i class="fa-solid fa-chevron-up i"></i>
-                        <select name="doctor_id" class="form-control" required>
-                            <option value="" disabled selected hidden>Doctor</option>
-                            @foreach($doctors as $doctor)
-                                <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea name="message" class="form-control" placeholder="Message" maxlength="100" required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input style="width:100%;" type="file" name="file" class="form-control-file">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                </form>
+            <div class="col-md-12">
+                <div class="card shadow-lg p-4">
+                    <h3 class="text-center text-secondary mb-4">Contact a Doctor</h3>
+                    <form action="{{ route('messages.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name }}" readonly>
+                        </div>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" value="{{ Auth::user()->email }}" readonly>
+                        </div>
+                        <!-- Phone -->
+                         <!-- Hidden User ID -->
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        <!-- Doctor Selection -->
+                        <div class="mb-3">
+                            <label for="doctor_id" class="form-label">Select Doctor</label>
+                            <select id="doctor_id" name="doctor_id" class="form-select" required>
+                                <option value="" disabled selected hidden>Choose a doctor...</option>
+                                @foreach($doctors as $doctor)
+                                    <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <!-- Message -->
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Write your message here..." maxlength="100" rows="3" required></textarea>
+                        </div>
+                        <!-- File Upload -->
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Upload File (Optional)</label>
+                            <input type="file" id="file" name="file" class="form-control">
+                        </div>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+<!-- Error Message -->
+@if ($errors->has('error'))
+<div class="alert alert-danger">
+    {{ $errors->first('error') }}
+</div>
+@endif
+
+
+<div class="container mt-5">
+    <div class="projects">
+        <h2 class="text-primary fw-bold text-center mb-4">Free Medical Advice</h2>
+        <div class="table-responsive shadow-lg rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date Sent</th>
+                        <th>Time Sent</th>
+                        <th>Message</th>
+                        <th>Prescription Patient</th>
+                        <th>Dr. Message</th>
+                        <th>Dr.Prescription </th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($messages as $message)
+                        <tr>
+                            <td>{{ $message->doctor->name }}</td>
+                            <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('l d, F Y') }}</td>
+                            <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('h:i A') }}</td>
+                            <td>{{ $message->message }}</td>
+                            <td>
+                                @if($message->patient_file_path)
+                                    <a href="{{ $message->patient_file_path }}" download>
+                                        Download File
+                                    </a>
+                                @else
+                                    No file available
+                                @endif
+                                </td>
+                            <td>{{ $message->replay }}</td>
+                            <td>
+                                @if($message->doctor_prescription != null)
+                                    <a href="{{ $message->doctor_file_path }}" class="btn btn-sm btn-outline-primary" download>
+                                        Download
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                <form action="{{ route('messages.destroy', $message->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 
 
 <!--====== SLIDER PART ENDS ======-->

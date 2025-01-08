@@ -180,43 +180,43 @@
                 </div>
             </div>
 
-            <div class="projects">
-                <h2>Free medical advice</h2>
-                <div class="responsive-table">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Doctor</th>
-                            <th>Date Send</th>
-                            <th>Time Send</th>
-                            <th>Message</th>
-                            <th>Dr.message</th>
-                            <th>Prescription</th>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($messages as $message)
+                <div class="projects">
+                    <h2>Free medical advice</h2>
+                    <div class="responsive-table">
+                        <table>
+                            <thead>
                             <tr>
-                                <td>{{ $message->doctor->name }}</td>
-                                <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('l d, F Y') }}</td>
-                                <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('h:i A') }}</td>
-                                <td>{{ $message->message }}</td>
-                                <td>{{ $message->replay }}</td>
-                                <td>@if($message->doctor_prescription != null)<a href="{{ $message->doctor_file_path }}" download>download</a>@endif</td>
-                                <td>
-                                    <form action="{{ route('messages.destroy', $message->id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
-                                </td>
+                                <th>Doctor</th>
+                                <th>Date Send</th>
+                                <th>Time Send</th>
+                                <th>Message</th>
+                                <th>Dr.message</th>
+                                <th>Prescription</th>
+                                <th>Delete</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            @foreach($messages as $message)
+                                <tr>
+                                    <td>{{ $message->doctor->name }}</td>
+                                    <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('l d, F Y') }}</td>
+                                    <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('h:i A') }}</td>
+                                    <td>{{ $message->message }}</td>
+                                    <td>{{ $message->replay }}</td>
+                                    <td>@if($message->doctor_prescription != null)<a href="{{ $message->doctor_file_path }}" download>download</a>@endif</td>
+                                    <td>
+                                        <form action="{{ route('messages.destroy', $message->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

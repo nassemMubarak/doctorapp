@@ -11,77 +11,102 @@
                         <!-- jquery validation -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h4 class="card-title">Edit Category</h4>
+                                <h4 class="card-title">Edit Doctor</h4>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form class="form" action="{{ route('categories.update', $category->id) }}" method="post" enctype="multipart/form-data">
+                            <form class="form" action="{{ route('admin.admins.update', $admin->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                @method('put')
-                                <div class="card-body">
+                                @method('PUT') <!-- Method spoofing for PUT request -->
+                                
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            
+                              
+                                <div class="modal-body">
+                                    <!-- Name Field -->
                                     <div class="form-group row">
-                                        <label class="col-form-label col-lg-3">{{ __('Image') }}</label>
-                                        <div class="col-lg-6">
-                                            <div class="image-input image-input-outline" id="kt_image_1">
-                                                <div class="image-input-wrapper"
-                                                     style="background-image: url({{ $category->image_path }});
-                                                            width: 120px;
-                                                            height: 120px;"></div>
-                                                <label
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="change" data-toggle="tooltip" title=""
-                                                    data-original-title="Add Image">
-                                                    <i class="fa fa-pen icon-sm text-muted"></i>
-                                                    <input type="file" name="image" accept=".png, .jpg, .jpeg"/>
-                                                    <input type="hidden" name="image_remove"/>
-                                                </label>
-                                                <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="cancel" data-toggle="tooltip" title="Remove Image">
-                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row ">
-                                        <label class="col-form-label col-lg-3">{{ __('Category Name') }}</label>
-                                        <div class="col-lg-6">
-                                            <input type="text"
-                                                   class="form-control form-control-solid @error('name')  is-invalid @enderror"
-                                                   name="name" value="{{ old('name', $category->name) }}"
-                                                   placeholder="category name..."/>
+                                        <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control form-control-solid @error('name') is-invalid @enderror" name="name" value="{{ old('name', $admin->name) }}" placeholder="name..." />
                                             @error('name')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row ">
-                                        <label class="col-form-label col-lg-3">{{ __('Description') }}</label>
-                                        <div class="col-lg-6">
-                                            <textarea type="text"
-                                                      class="form-control form-control-solid @error('description')  is-invalid @enderror"
-                                                      name="description" value="{{ old('desc') }}"
-                                                      placeholder="write a short description...">{{ $category->description }}</textarea>
-                                            @error('description')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                            
+                                    <!-- Email Field -->
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="email" class="form-control form-control-solid @error('email') is-invalid @enderror" name="email" value="{{ old('email', $admin->email) }}" placeholder="email..." />
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
+                            
+                                    <!-- Password Field -->
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Password') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="password" class="form-control form-control-solid @error('password') is-invalid @enderror" name="password" placeholder="Password" />
+                                            @error('password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Confirm Password Field -->
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Confirm Password') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="password" class="form-control form-control-solid @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="Confirm password" />
+                                            @error('password_confirmation')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Specialty Field -->
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Specialty') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control form-control-solid" name="specialty" value="{{ old('specialty', $admin->specialty) }}" placeholder="Specialty..." />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Phone Number Field -->
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Phone Number') }}</label>
+                                        <div class="col-lg-9">
+                                            <input type="tel" class="form-control form-control-solid" name="phone_number" value="{{ old('phone_number', $admin->phone_number) }}" placeholder="Phone Number..." />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Address Field -->
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-lg-3">{{ __('Address') }}</label>
+                                        <div class="col-lg-9">
+                                            <textarea class="form-control form-control-solid" name="address" placeholder="Address...">{{ old('address', $admin->address) }}</textarea>
+                                        </div>
+                                    </div>
+                            
                                 </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-9 ml-lg-auto">
-                                            <button type="submit" class="btn btn-primary font-weight-bold mr-2">Save
-                                            </button>
-                                            <button type="submit" class="btn btn-light-primary font-weight-bold">
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    </div>
+                            
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" id="AddUser">Update</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
                             </form>
-                        </div>
+                                                    </div>
                         <!-- /.card -->
                     </div>
                     <!--/.col (left) -->

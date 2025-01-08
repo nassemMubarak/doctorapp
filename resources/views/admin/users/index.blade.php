@@ -6,7 +6,7 @@
         <div class="card card-custom gutter-b">
             <div class="card-header flex-wrap border-0">
                 <div class="card-title">
-                    <h3 class="card-label">All Users
+                    <h3 class="card-label">Users
                     </h3>
                 </div>
                 <div class="card-toolbar">
@@ -30,7 +30,7 @@
             <div class="container border-0 pt-6 pb-0" style="background-color: transparent; min-height: 70px">
 
                     <!--begin::Card-->
-                    <div class="gutter-b example example-compact">
+                    {{-- <div class="gutter-b example example-compact">
                         <div class="contentTable">
                             <button  type="button" class="btn btn-secondary btn--filter" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="icon-xl la la-sliders-h"></i>{{__('filter')}}</button>
                             <div class="collapse mt-5" id="collapseExample">
@@ -60,12 +60,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!--end::Card-->
             </div>
             <div class="card-body">
                 <!--begin: Datatable-->
-                <table class="table-bordered table-responsive w-100" id="table_id">
+                {{-- <table class="table-bordered table-responsive w-100" id="table_id">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -83,7 +83,69 @@
                     </thead>
                     <tbody>
                     </tbody>
+                </table> --}}
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
+            <!-- Error Message -->
+            @if ($errors->has('error'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('error') }}
+                </div>
+            @endif
+                <table class="table table-bordered table-responsive w-100">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>National ID</th>
+                            <th>Gender</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>Identity Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->national_id }}</td>
+                                <td>{{ $user->gender == 'm' ? 'Male' : 'Female' }}</td>
+                                <td>{{ $user->phone_number }}</td>
+                                <td>{{ $user->address }}</td>
+                                <td>
+                                    @if ($user->identity_image)
+                                        <img src="{{ asset('storage/' . $user->identity_image) }}" width="100px" height="100px" alt="Identity Image">
+                                    @else
+                                        No Image
+                                    @endif
+                                </td>
+                                <td>
+                                    <div style="display: flex; justify-content: space-evenly;">
+                                        @can('update', $user)
+                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn mx-2 btn-sm btn-primary">Edit</a>
+                                        @endcan
+                                        @can('delete', $user)
+                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        @endcan
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
+                
                 <!--end: Datatable-->
             </div>
         </div>
@@ -103,7 +165,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-form-label col-lg-3">{{ __('Image') }}</label>
                             <div class="col-lg-9">
                                 <div class="image-input image-input-outline" id="kt_image_1">
@@ -125,7 +187,7 @@
                                                 </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row ">
                             <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
                             <div class="col-lg-9">
@@ -174,7 +236,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row ">
+                        {{-- <div class="form-group row ">
                             <label class="col-form-label col-lg-3">{{ __('Mobile') }}</label>
                             <div class="col-lg-9">
                                 <input type="tel"
@@ -185,18 +247,18 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row ">
                                 <label class="col-form-label col-lg-3">{{ __('Gender') }}</label>
                                 <div class="col-lg-9">
                                     <select name="gender"
                                             class="form-control form-control-solid">
-                                        <option value="m" name="gender">Male</option>
-                                        <option value="f" name="gender">Female</option>
+                                        <option value="male" name="gender">Male</option>
+                                        <option value="female" name="gender">Female</option>
                                     </select>
                                 </div>
                         </div>
-                        <div class="form-group row ">
+                        {{-- <div class="form-group row ">
                                 <label class="col-form-label col-lg-3">{{ __('Status') }}</label>
                                 <div class="col-lg-9">
                                     <select name="status"
@@ -205,8 +267,8 @@
                                         <option value="unsick" name="status">Unsick</option>
                                     </select>
                                 </div>
-                        </div>
-                        <div class="form-group row ">
+                        </div> --}}
+                        {{-- <div class="form-group row ">
                             <label class="col-form-label col-lg-3">{{ __('Birthday') }}</label>
                             <div class="col-lg-9">
                                 <input type="date"
@@ -217,8 +279,8 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="form-group row">
+                        </div> --}}
+                        {{-- <div class="form-group row">
                             <label class="col-3 col-form-label">{{ __('Diseases') }}</label>
                            <div class="col-9 col-form-label">
                                 <div class="checkbox-inline">
@@ -258,7 +320,44 @@
                                     </label>
                                 </div>
                            </div>
+                        </div> --}}
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">National ID</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" placeholder="National ID...">
+                                @error('national_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">Phone Number</label>
+                            <div class="col-lg-9">
+                                <input type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" placeholder="Phone number...">
+                                @error('phone_number')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">Address</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control @error('address') is-invalid @enderror" name="address" placeholder="Address...">{{ old('address') }}</textarea>
+                                @error('address')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">Identity Image</label>
+                            <div class="col-lg-9">
+                                <input type="file" class="form-control @error('identity_image') is-invalid @enderror" name="identity_image" accept=".jpg, .jpeg, .png">
+                                @error('identity_image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="AddUser">Add</button>
@@ -435,7 +534,7 @@
 
 @endsection
 
-@push('scripts')
+{{-- @push('scripts')
     <script type="text/javascript">
         $(function() {
             let table = $('#table_id').DataTable({
@@ -556,4 +655,4 @@
 
         })
     </script>
-@endpush
+@endpush --}}

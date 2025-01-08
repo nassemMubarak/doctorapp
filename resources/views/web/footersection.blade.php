@@ -219,6 +219,7 @@
 
 <!--====== Main js ======-->
 <script src="{{ asset('assets_medical/js/main.js')}}"></script>
+ <script src="https://kit.fontawesome.com/your-fontawesome-key.js" crossorigin="anonymous"></script>
 
 </body>
 
