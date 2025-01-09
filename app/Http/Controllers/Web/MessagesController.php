@@ -31,7 +31,6 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'doctor_id' => 'required|exists:admins,id',

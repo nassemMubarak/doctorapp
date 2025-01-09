@@ -1,406 +1,457 @@
 @extends('admin.layouts.layout')
 
 @section('content')
-<div>
-    <!--begin::Card-->
-    <div class="card card-custom gutter-b">
-        <div class="card-header flex-wrap border-0">
-            <div class="card-title">
-                <h3 class="card-label">All Doctors
-                </h3>
-            </div>
-            <div class="card-toolbar">
-                <!--begin::Button-->
-                <button type="button" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#userAddModal">
-                    <span class="svg-icon svg-icon-md">
-                        <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" cx="9" cy="15" r="6" />
-                                <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
-                            </g>
-                        </svg>
-                        <!--end::Svg Icon-->
-                    </span>Add Doctor
-                </button>
+    <div>
+        <!--begin::Card-->
+        <div class="card card-custom gutter-b">
+            <div class="card-header flex-wrap border-0">
+                <div class="card-title">
+                    <h3 class="card-label">All Doctors
+                    </h3>
+                </div>
+                <div class="card-toolbar">
+                    <!--begin::Button-->
+                    <button type="button" class="btn btn-primary font-weight-bolder" data-toggle="modal"
+                        data-target="#userAddModal">
+                        <span class="svg-icon svg-icon-md">
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" cx="9" cy="15" r="6" />
+                                    <path
+                                        d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
+                                        fill="#000000" opacity="0.3" />
+                                </g>
+                            </svg>
+                            <!--end::Svg Icon-->
+                        </span>Add Doctor
+                    </button>
 
-                <!--end::Button-->
+                    <!--end::Button-->
+                </div>
             </div>
-        </div>
-         @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    
-    <!-- Error Message -->
-    @if ($errors->has('error'))
-        <div class="alert alert-danger">
-            {{ $errors->first('error') }}
-        </div>
-    @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-        <div class="card-body w-100">
-            <!--begin: Datatable-->
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover table-sm" id="table_id">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Specialty</th>
-                            <th>Phone Number</th>
-                            <th>Address</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($doctors as $key => $doctor)
+            <!-- Error Message -->
+            @if ($errors->has('error'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('error') }}
+                </div>
+            @endif
+
+            <div class="card-body w-100">
+                <!--begin: Datatable-->
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-sm" id="table_id">
+                        <thead>
                             <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ $doctor->name }}</td>
-                                <td>{{ $doctor->email }}</td>
-                                <td>{{ $doctor->specialty }}</td>
-                                <td>{{ $doctor->phone_number }}</td>
-                                <td>{{ $doctor->address }}</td>
-                                <td>
-                                    <!-- Action buttons (edit, delete) -->
-                                    <a href="{{ route('admin.admins.edit', $doctor->id) }}" class="btn btn-sm btn-info">Edit</a>
-                                    <form action="{{ route('admin.admins.destroy', $doctor->id) }}" method="POST" style="display:inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                    </form>
-                                </td>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Specialty</th>
+                                <th>Phone Number</th>
+                                <th>Address</th>
+                                <th>Actions</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="d-flex justify-content-center">
-                {{ $doctors->links() }}
-            </div>
-        </div>
-                        
-        <!-- Pagination links -->
-         
-    </div>
-    <!--end::Card-->
-</div>
-
-<!-- Add Modal -->
-<div class="modal fade" id="userAddModal" tabindex="-1" role="dialog" aria-labelledby="userAddModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content modal-dialog">
-            <form class="form" action="{{ route('admin.admins.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                        </thead>
+                        <tbody>
+                            @foreach ($doctors as $key => $doctor)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $doctor->name }}</td>
+                                    <td>{{ $doctor->email }}</td>
+                                    <td>{{ $doctor->specialty }}</td>
+                                    <td>{{ $doctor->phone_number }}</td>
+                                    <td>{{ $doctor->address }}</td>
+                                    <td>
+                                        <!-- Action buttons (edit, delete) -->
+                                        <a href="{{ route('admin.admins.edit', $doctor->id) }}"
+                                            class="btn btn-sm btn-info">Edit</a>
+                                        <form action="{{ route('admin.admins.destroy', $doctor->id) }}" method="POST"
+                                            style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Doctor</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control form-control-solid @error('name')  is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="name..." />
-                            @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
-                        <div class="col-lg-9">
-                            <input type="email" class="form-control form-control-solid @error('email')  is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="email..." />
-                            @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Password') }}</label>
-                        <div class="col-lg-9">
-                            <input type="password" class="form-control form-control-solid @error('password')  is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="Password" />
-                            @error('password')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Confirm Password') }}</label>
-                        <div class="col-lg-9">
-                            <input type="password" class="form-control form-control-solid @error('password_confirmation')  is-invalid @enderror" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm password" />
-                            @error('password_confirmation')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
- 
-
-                     <div class="form-group row">
-                        <label class="col-form-label col-lg-3">{{ __('Specialty') }}</label>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control form-control-solid" name="specialty" value="{{ old('specialty') }}" placeholder="Specialty..."/>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <label class="col-form-label col-lg-3">{{ __('Phone Number') }}</label>
-                        <div class="col-lg-9">
-                            <input type="tel" class="form-control form-control-solid" name="phone_number" value="{{ old('phone_number') }}" placeholder="Phone Number..."/>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <label class="col-form-label col-lg-3">{{ __('Address') }}</label>
-                        <div class="col-lg-9">
-                            <textarea class="form-control form-control-solid" name="address" placeholder="Address...">{{ old('address') }}</textarea>
-                        </div>
-                    </div>
-
-
-
+                <div class="d-flex justify-content-center">
+                    {{ $doctors->links() }}
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="AddUser">Add</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </form>
+            </div>
+
+            <!-- Pagination links -->
+
         </div>
+        <!--end::Card-->
     </div>
-</div>
-{{-- End Add Modal   --}}
 
-<!-- Edit Modal -->
-<div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content modal-dialog">
-            <form id="form" class="form" action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                @method('put')
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Show Doctor</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label class="col-form-label col-lg-3">{{ __('Image') }}</label>
-                        <div class="col-lg-9">
-                            <div class="image-input image-input-outline" id="kt_image_2">
-                                <div class="image-input-wrapper" id="setImage" style="background-image: url({{asset('assets/admin/assets/media/users/blank.png')}});
-                                                            width: 120px;
-                                                            height: 120px;"></div>
-                                <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Add Image">
-                                    <i class="fa fa-pen icon-sm text-muted"></i>
-                                    <input type="file" name="image" accept=".png, .jpg, .jpeg" />
-                                    <input type="hidden" name="image_remove" />
-                                </label>
-
-                                <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Remove Image">
-                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                </span>
+    <!-- Add Modal -->
+    <div class="modal fade" id="userAddModal" tabindex="-1" role="dialog" aria-labelledby="userAddModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content modal-dialog">
+                <form class="form" action="{{ route('admin.admins.store') }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add Doctor</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
+                            <div class="col-lg-9">
+                                <input type="text"
+                                    class="form-control form-control-solid @error('name')  is-invalid @enderror"
+                                    name="name" value="{{ old('name') }}" placeholder="name..." />
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
-                    </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
+                            <div class="col-lg-9">
+                                <input type="email"
+                                    class="form-control form-control-solid @error('email')  is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" placeholder="email..." />
+                                @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Password') }}</label>
+                            <div class="col-lg-9">
+                                <input type="password"
+                                    class="form-control form-control-solid @error('password')  is-invalid @enderror"
+                                    name="password" value="{{ old('password') }}" placeholder="Password" />
+                                @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Confirm Password') }}</label>
+                            <div class="col-lg-9">
+                                <input type="password"
+                                    class="form-control form-control-solid @error('password_confirmation')  is-invalid @enderror"
+                                    name="password_confirmation" value="{{ old('password_confirmation') }}"
+                                    placeholder="Confirm password" />
+                                @error('password_confirmation')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
-                        <div class="col-lg-9">
-                            <input type="text" id="name" class="form-control form-control-solid @error('name')  is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="name..." />
-                            @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
-                        <div class="col-lg-9">
-                            <input type="email" id="email" class="form-control form-control-solid @error('email')  is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="email..." />
-                            @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Age') }}</label>
-                        <div class="col-lg-9">
-                            <input type="number" id="age" class="form-control form-control-solid @error('age')  is-invalid @enderror" name="age" value="{{ old('age') }}" placeholder="age..." />
-                            @error('age')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Gender') }}</label>
-                        <div class="col-lg-9">
-                            <select name="gender" id="gender" class="form-control form-control-solid">
-                                <option value="m" name="gender">Male</option>
-                                <option value="f" name="gender">Female</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('City') }}</label>
-                        <div class="col-lg-9">
-                            <select name="city" class="form-control form-control-solid">
-                                @foreach($countries as $country)
-                                <option value="{{$country}}" name="gender">{{$country}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Country of Graduation') }}</label>
-                        <div class="col-lg-9">
-                            <select name="country_of_graduation" class="form-control form-control-solid">
-                                @foreach($countries as $country)
-                                <option value="{{$country}}" name="gender">{{$country}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Specialization') }}</label>
-                        <div class="col-lg-9">
-                            <select name="specialization" class="form-control form-control-solid" id="specialization">
-                                <option value="">Select Specialization...</option>
-                                <option value="General surgery" name="specialization">General surgery</option>
-                                <option value="Internal medicine" name="specialization">Internal medicine</option>
-                                <option value="Orthopedic medicine" name="specialization">Orthopedic medicine</option>
-                                <option value="Operations nursing" name="specialization">Operations nursing</option>
-                                <option value="Cardiac specialty" name="specialization">Cardiac specialty</option>
-                                <option value="Radiology specialty" name="specialization">Radiology specialty</option>
-                                <option value="Waistcoat specialty" name="specialization">Waistcoat specialty</option>
-                                <option value="Vascular surgery" name="specialization">Vascular surgery</option>
-                                <option value="General and emergency surgery" name="specialization">General and emergency surgery</option>
-                                <option value="Hematology specialty" name="specialization">Hematology specialty</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Specialization Description') }}</label>
-                        <div class="col-lg-9">
-                            <input type="text" id="specialization_desc_one" class="form-control form-control-solid @error('specialization_desc_one')  is-invalid @enderror mb-5" name="specialization_desc_one" value="{{ old('specialization_desc_one') }}" placeholder="specialization description one..." />
-                            @error('specialization_desc_one')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
 
-                            <input type="text" id="specialization_desc_two" class="form-control form-control-solid @error('specialization_desc_two')  is-invalid @enderror mb-5" name="specialization_desc_two" value="{{ old('specialization_desc_two') }}" placeholder="specialization description two..." />
-                            @error('specialization_desc_two')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">{{ __('Specialty') }}</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control form-control-solid" name="specialty"
+                                    value="{{ old('specialty') }}" placeholder="Specialty..." />
+                            </div>
+                        </div>
 
-                            <input type="text" id="specialization_desc_three" class="form-control form-control-solid @error('specialization_desc_three')  is-invalid @enderror" name="specialization_desc_three" value="{{ old('specialization_desc_three') }}" placeholder="specialization description three..." />
-                            @error('specialization_desc_three')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">{{ __('Phone Number') }}</label>
+                            <div class="col-lg-9">
+                                <input type="tel" class="form-control form-control-solid" name="phone_number"
+                                    value="{{ old('phone_number') }}" placeholder="Phone Number..." />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Years of Experience') }}</label>
-                        <div class="col-lg-9">
-                            <input type="number" id="years_of_experience" class="form-control form-control-solid @error('years_of_experience')  is-invalid @enderror" name="years_of_experience" value="{{ old('years_of_experience') }}" placeholder="years of experience..." />
-                            @error('years_of_experience')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">{{ __('Address') }}</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control form-control-solid" name="address" placeholder="Address...">{{ old('address') }}</textarea>
+                            </div>
                         </div>
+
+
+
                     </div>
-                    <div class="form-group row">
-                        <label class="col-3 col-form-label">{{ __('Appointments') }}</label>
-                        <div class="col-9 col-form-label" id="appointments">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="AddUser">Add</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- End Add Modal   --}}
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content modal-dialog">
+                <form id="form" class="form" action="{{ route('admin.users.store') }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Show Doctor</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">{{ __('Image') }}</label>
+                            <div class="col-lg-9">
+                                <div class="image-input image-input-outline" id="kt_image_2">
+                                    <div class="image-input-wrapper" id="setImage"
+                                        style="background-image: url({{ asset('assets/admin/assets/media/users/blank.png') }});
+                                                            width: 120px;
+                                                            height: 120px;">
+                                    </div>
+                                    <label
+                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                        data-action="change" data-toggle="tooltip" title=""
+                                        data-original-title="Add Image">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="image_remove" />
+                                    </label>
+
+                                    <span
+                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                        data-action="cancel" data-toggle="tooltip" title="Remove Image">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
+                            <div class="col-lg-9">
+                                <input type="text" id="name"
+                                    class="form-control form-control-solid @error('name')  is-invalid @enderror"
+                                    name="name" value="{{ old('name') }}" placeholder="name..." />
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
+                            <div class="col-lg-9">
+                                <input type="email" id="email"
+                                    class="form-control form-control-solid @error('email')  is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" placeholder="email..." />
+                                @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Age') }}</label>
+                            <div class="col-lg-9">
+                                <input type="number" id="age"
+                                    class="form-control form-control-solid @error('age')  is-invalid @enderror"
+                                    name="age" value="{{ old('age') }}" placeholder="age..." />
+                                @error('age')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Gender') }}</label>
+                            <div class="col-lg-9">
+                                <select name="gender" id="gender" class="form-control form-control-solid">
+                                    <option value="m" name="gender">Male</option>
+                                    <option value="f" name="gender">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('City') }}</label>
+                            <div class="col-lg-9">
+                                <select name="city" class="form-control form-control-solid">
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country }}" name="gender">{{ $country }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Country of Graduation') }}</label>
+                            <div class="col-lg-9">
+                                <select name="country_of_graduation" class="form-control form-control-solid">
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country }}" name="gender">{{ $country }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Specialization') }}</label>
+                            <div class="col-lg-9">
+                                <select name="specialization" class="form-control form-control-solid"
+                                    id="specialization">
+                                    <option value="">Select Specialization...</option>
+                                    <option value="General surgery" name="specialization">General surgery</option>
+                                    <option value="Internal medicine" name="specialization">Internal medicine</option>
+                                    <option value="Orthopedic medicine" name="specialization">Orthopedic medicine</option>
+                                    <option value="Operations nursing" name="specialization">Operations nursing</option>
+                                    <option value="Cardiac specialty" name="specialization">Cardiac specialty</option>
+                                    <option value="Radiology specialty" name="specialization">Radiology specialty</option>
+                                    <option value="Waistcoat specialty" name="specialization">Waistcoat specialty</option>
+                                    <option value="Vascular surgery" name="specialization">Vascular surgery</option>
+                                    <option value="General and emergency surgery" name="specialization">General and
+                                        emergency surgery</option>
+                                    <option value="Hematology specialty" name="specialization">Hematology specialty
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Specialization Description') }}</label>
+                            <div class="col-lg-9">
+                                <input type="text" id="specialization_desc_one"
+                                    class="form-control form-control-solid @error('specialization_desc_one')  is-invalid @enderror mb-5"
+                                    name="specialization_desc_one" value="{{ old('specialization_desc_one') }}"
+                                    placeholder="specialization description one..." />
+                                @error('specialization_desc_one')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+
+                                <input type="text" id="specialization_desc_two"
+                                    class="form-control form-control-solid @error('specialization_desc_two')  is-invalid @enderror mb-5"
+                                    name="specialization_desc_two" value="{{ old('specialization_desc_two') }}"
+                                    placeholder="specialization description two..." />
+                                @error('specialization_desc_two')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+
+                                <input type="text" id="specialization_desc_three"
+                                    class="form-control form-control-solid @error('specialization_desc_three')  is-invalid @enderror"
+                                    name="specialization_desc_three" value="{{ old('specialization_desc_three') }}"
+                                    placeholder="specialization description three..." />
+                                @error('specialization_desc_three')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Years of Experience') }}</label>
+                            <div class="col-lg-9">
+                                <input type="number" id="years_of_experience"
+                                    class="form-control form-control-solid @error('years_of_experience')  is-invalid @enderror"
+                                    name="years_of_experience" value="{{ old('years_of_experience') }}"
+                                    placeholder="years of experience..." />
+                                @error('years_of_experience')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 col-form-label">{{ __('Appointments') }}</label>
+                            <div class="col-9 col-form-label" id="appointments">
 
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="9:00 - 10:00 am"/>
+                                    <input type="checkbox" name="appointments[]" value="9:00 - 10:00 am" />
                                     <span></span>
                                     9:00 - 10:00 am
                                 </label>
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="10:00 - 11:00 am"/>
+                                    <input type="checkbox" name="appointments[]" value="10:00 - 11:00 am" />
                                     <span></span>
                                     10:00 - 11:00 am
                                 </label>
 
 
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="11:00 - 12:00 am"/>
+                                    <input type="checkbox" name="appointments[]" value="11:00 - 12:00 am" />
                                     <span></span>
                                     11:00 - 12:00 am
                                 </label>
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="12:00 - 1:00 pm"/>
+                                    <input type="checkbox" name="appointments[]" value="12:00 - 1:00 pm" />
                                     <span></span>
                                     12:00 - 1:00 pm
                                 </label>
 
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="1:00 - 2:00 pm"/>
+                                    <input type="checkbox" name="appointments[]" value="1:00 - 2:00 pm" />
                                     <span></span>
                                     1:00 - 2:00 pm
                                 </label>
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="2:00 - 3:00 pm"/>
+                                    <input type="checkbox" name="appointments[]" value="2:00 - 3:00 pm" />
                                     <span></span>
                                     2:00 - 3:00 pm
                                 </label>
 
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="3:00 - 4:00 pm"/>
+                                    <input type="checkbox" name="appointments[]" value="3:00 - 4:00 pm" />
                                     <span></span>
                                     3:00 - 4:00 pm
                                 </label>
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="4:00 - 5:00 pm"/>
+                                    <input type="checkbox" name="appointments[]" value="4:00 - 5:00 pm" />
                                     <span></span>
                                     4:00 - 5:00 pm
                                 </label>
 
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="5:00 - 6:00 pm"/>
+                                    <input type="checkbox" name="appointments[]" value="5:00 - 6:00 pm" />
                                     <span></span>
                                     5:00 - 6:00 pm
                                 </label>
                                 <label class="checkbox checkbox-outline checkbox-success">
-                                    <input type="checkbox" name="appointments[]" value="6:00 - 7:00 pm"/>
+                                    <input type="checkbox" name="appointments[]" value="6:00 - 7:00 pm" />
                                     <span></span>
                                     6:00 - 7:00 pm
                                 </label>
 
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Description') }}</label>
+                            <div class="col-lg-9">
+                                <textarea type="text" id="description"
+                                    class="form-control form-control-solid @error('description')  is-invalid @enderror" name="description"
+                                    value="{{ old('description') }}" placeholder="write description..."></textarea>
+                                @error('description')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Description') }}</label>
-                        <div class="col-lg-9">
-                            <textarea type="text" id="description" class="form-control form-control-solid @error('description')  is-invalid @enderror" name="description" value="{{ old('description') }}" placeholder="write description..."></textarea>
-                            @error('description')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="EditUser">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="EditUser">Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-{{-- End Edit Modal   --}}
+    {{-- End Edit Modal   --}}
 
 
 
@@ -552,7 +603,7 @@
 
     })
 
-    @if($errors->has('*'))
+    @if ($errors->has('*'))
     let modal = $("#userEditModal").show();
 
     modal.modal("show")

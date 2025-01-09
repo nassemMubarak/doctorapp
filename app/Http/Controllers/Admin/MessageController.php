@@ -40,6 +40,13 @@ class MessageController extends Controller
                 ->addColumn('replay', function ($row) {
                     return $row->replay;
                 })
+                ->addColumn('file_path_doctor', function ($row) {
+                    $file = '';
+                    if($row->doctor_prescription != null){
+                    $file = '<a href="'. $row->doctor_file_path . '" download>download</a>';
+                    }
+                    return $file;
+                })
                 ->addColumn('file_path', function ($row) {
                     $file = '';
                     if($row->patient_prescription != null){
@@ -60,15 +67,7 @@ class MessageController extends Controller
                             ';
                     return $btn;
                 })
-                ->rawColumns(['patient', 'doctor', 'time', 'date', 'message', 'file_path','actions'])
-                ->filter(function ($query) use ($request) {
-                    if ($request->has('name') && $request->get('name') != null) {
-                        $query->where('name', 'like', "%{$request->get('name')}%");
-                    }
-                    if ($request->has('email') && $request->get('email') != null) {
-                        $query->category->where('email', 'like', "%{$request->get('email')}%");
-                    }
-                })
+                ->rawColumns(['patient', 'doctor', 'time', 'date', 'message', 'file_path','file_path_doctor','actions'])
                 ->toJson();
         }
 

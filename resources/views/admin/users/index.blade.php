@@ -11,15 +11,20 @@
                 </div>
                 <div class="card-toolbar">
                     <!--begin::Button-->
-                    <button type="button" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#userAddModal">
+                    <button type="button" class="btn btn-primary font-weight-bolder" data-toggle="modal"
+                        data-target="#userAddModal">
                         <span class="svg-icon svg-icon-md">
-                          <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
-                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                              <rect x="0" y="0" width="24" height="24" /><circle fill="#000000" cx="9" cy="15" r="6" />
-                              <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
-                            </g>
-                          </svg>
+                            <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" cx="9" cy="15" r="6" />
+                                    <path
+                                        d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
+                                        fill="#000000" opacity="0.3" />
+                                </g>
+                            </svg>
                             <!--end::Svg Icon-->
                         </span>Add User
                     </button>
@@ -29,8 +34,8 @@
             </div>
             <div class="container border-0 pt-6 pb-0" style="background-color: transparent; min-height: 70px">
 
-                    <!--begin::Card-->
-                    {{-- <div class="gutter-b example example-compact">
+                <!--begin::Card-->
+                {{-- <div class="gutter-b example example-compact">
                         <div class="contentTable">
                             <button  type="button" class="btn btn-secondary btn--filter" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="icon-xl la la-sliders-h"></i>{{__('filter')}}</button>
                             <div class="collapse mt-5" id="collapseExample">
@@ -61,41 +66,21 @@
                             </div>
                         </div>
                     </div> --}}
-                    <!--end::Card-->
+                <!--end::Card-->
             </div>
             <div class="card-body">
-                <!--begin: Datatable-->
-                {{-- <table class="table-bordered table-responsive w-100" id="table_id">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>gender</th>
-                        <th>status</th>
-                        <th>birthday</th>
-                        <th>diseases</th>
-                        <th>Actions</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table> --}}
                 @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-            
-            <!-- Error Message -->
-            @if ($errors->has('error'))
-                <div class="alert alert-danger">
-                    {{ $errors->first('error') }}
-                </div>
-            @endif
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <!-- Error Message -->
+                @if ($errors->has('error'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('error') }}
+                    </div>
+                @endif
                 <table class="table table-bordered table-responsive w-100">
                     <thead>
                         <tr>
@@ -122,7 +107,8 @@
                                 <td>{{ $user->address }}</td>
                                 <td>
                                     @if ($user->identity_image)
-                                        <img src="{{ asset('storage/' . $user->identity_image) }}" width="100px" height="100px" alt="Identity Image">
+                                        <img src="{{ asset('storage/' . $user->identity_image) }}" width="100px"
+                                            height="100px" alt="Identity Image">
                                     @else
                                         No Image
                                     @endif
@@ -130,10 +116,12 @@
                                 <td>
                                     <div style="display: flex; justify-content: space-evenly;">
                                         @can('update', $user)
-                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn mx-2 btn-sm btn-primary">Edit</a>
+                                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                                                class="btn mx-2 btn-sm btn-primary">Edit</a>
                                         @endcan
                                         @can('delete', $user)
-                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST"
+                                                style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
@@ -145,18 +133,19 @@
                         @endforeach
                     </tbody>
                 </table>
-                
-                <!--end: Datatable-->
+
             </div>
         </div>
         <!--end::Card-->
     </div>
 
     <!-- Add Modal -->
-    <div class="modal fade" id="userAddModal" tabindex="-1" role="dialog" aria-labelledby="userAddModal" aria-hidden="true">
+    <div class="modal fade" id="userAddModal" tabindex="-1" role="dialog" aria-labelledby="userAddModal"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content modal-dialog">
-                <form class="form" action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data">
+                <form class="form" action="{{ route('admin.users.store') }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Add User</h5>
@@ -192,11 +181,10 @@
                             <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
                             <div class="col-lg-9">
                                 <input type="text"
-                                       class="form-control form-control-solid @error('name')  is-invalid @enderror"
-                                       name="name" value="{{ old('name') }}"
-                                       placeholder="name..."/>
+                                    class="form-control form-control-solid @error('name')  is-invalid @enderror"
+                                    name="name" value="{{ old('name') }}" placeholder="name..." />
                                 @error('name')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -204,11 +192,10 @@
                             <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
                             <div class="col-lg-9">
                                 <input type="email"
-                                       class="form-control form-control-solid @error('email')  is-invalid @enderror"
-                                       name="email" value="{{ old('email') }}"
-                                       placeholder="email..."/>
+                                    class="form-control form-control-solid @error('email')  is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" placeholder="email..." />
                                 @error('email')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -216,11 +203,10 @@
                             <label class="col-form-label col-lg-3">{{ __('Password') }}</label>
                             <div class="col-lg-9">
                                 <input type="password"
-                                       class="form-control form-control-solid @error('password')  is-invalid @enderror"
-                                       name="password" value="{{ old('password') }}"
-                                       placeholder="Password"/>
+                                    class="form-control form-control-solid @error('password')  is-invalid @enderror"
+                                    name="password" value="{{ old('password') }}" placeholder="Password" />
                                 @error('password')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -228,11 +214,11 @@
                             <label class="col-form-label col-lg-3">{{ __('Confirm Password') }}</label>
                             <div class="col-lg-9">
                                 <input type="password"
-                                       class="form-control form-control-solid @error('password_confirmation')  is-invalid @enderror"
-                                       name="password_confirmation" value="{{ old('password_confirmation') }}"
-                                       placeholder="Confirm password"/>
+                                    class="form-control form-control-solid @error('password_confirmation')  is-invalid @enderror"
+                                    name="password_confirmation" value="{{ old('password_confirmation') }}"
+                                    placeholder="Confirm password" />
                                 @error('password_confirmation')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -249,14 +235,13 @@
                             </div>
                         </div> --}}
                         <div class="form-group row ">
-                                <label class="col-form-label col-lg-3">{{ __('Gender') }}</label>
-                                <div class="col-lg-9">
-                                    <select name="gender"
-                                            class="form-control form-control-solid">
-                                        <option value="male" name="gender">Male</option>
-                                        <option value="female" name="gender">Female</option>
-                                    </select>
-                                </div>
+                            <label class="col-form-label col-lg-3">{{ __('Gender') }}</label>
+                            <div class="col-lg-9">
+                                <select name="gender" class="form-control form-control-solid">
+                                    <option value="male" name="gender">Male</option>
+                                    <option value="female" name="gender">Female</option>
+                                </select>
+                            </div>
                         </div>
                         {{-- <div class="form-group row ">
                                 <label class="col-form-label col-lg-3">{{ __('Status') }}</label>
@@ -324,18 +309,20 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-3">National ID</label>
                             <div class="col-lg-9">
-                                <input type="text" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" placeholder="National ID...">
+                                <input type="text" class="form-control @error('national_id') is-invalid @enderror"
+                                    name="national_id" value="{{ old('national_id') }}" placeholder="National ID...">
                                 @error('national_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-form-label col-lg-3">Phone Number</label>
                             <div class="col-lg-9">
-                                <input type="tel" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" placeholder="Phone number...">
+                                <input type="tel" class="form-control @error('phone_number') is-invalid @enderror"
+                                    name="phone_number" value="{{ old('phone_number') }}" placeholder="Phone number...">
                                 @error('phone_number')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -344,20 +331,21 @@
                             <div class="col-lg-9">
                                 <textarea class="form-control @error('address') is-invalid @enderror" name="address" placeholder="Address...">{{ old('address') }}</textarea>
                                 @error('address')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-form-label col-lg-3">Identity Image</label>
                             <div class="col-lg-9">
-                                <input type="file" class="form-control @error('identity_image') is-invalid @enderror" name="identity_image" accept=".jpg, .jpeg, .png">
+                                <input type="file" class="form-control @error('identity_image') is-invalid @enderror"
+                                    name="identity_image" accept=".jpg, .jpeg, .png">
                                 @error('identity_image')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="AddUser">Add</button>
@@ -370,168 +358,161 @@
     {{-- End Add Modal   --}}
 
     <!-- Edit Modal -->
-    <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModal" aria-hidden="true">
+    <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="userEditModal"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content modal-dialog">
-                <form id="form" class="form" action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data">
+                <form id="form" class="form" action="{{ route('admin.users.store') }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Show User</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label class="col-form-label col-lg-3">{{ __('Image') }}</label>
-                        <div class="col-lg-9">
-                            <div class="image-input image-input-outline" id="kt_image_2">
-                                <div class="image-input-wrapper" id="setImage"
-                                     style="background-image: url({{asset('assets/admin/assets/media/users/blank.png')}});
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Show User</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">{{ __('Image') }}</label>
+                            <div class="col-lg-9">
+                                <div class="image-input image-input-outline" id="kt_image_2">
+                                    <div class="image-input-wrapper" id="setImage"
+                                        style="background-image: url({{ asset('assets/admin/assets/media/users/blank.png') }});
                                                             width: 120px;
-                                                            height: 120px;"></div>
-                                <label
-                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                    data-action="change" data-toggle="tooltip" title=""
-                                    data-original-title="Add Image">
-                                    <i class="fa fa-pen icon-sm text-muted"></i>
-                                    <input type="file" name="image" accept=".png, .jpg, .jpeg"/>
-                                    <input type="hidden" name="image_remove"/>
-                                </label>
+                                                            height: 120px;">
+                                    </div>
+                                    <label
+                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                        data-action="change" data-toggle="tooltip" title=""
+                                        data-original-title="Add Image">
+                                        <i class="fa fa-pen icon-sm text-muted"></i>
+                                        <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="image_remove" />
+                                    </label>
 
-                                <span
-                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                    data-action="cancel" data-toggle="tooltip" title="Remove Image">
-                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                </span>
+                                    <span
+                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                        data-action="cancel" data-toggle="tooltip" title="Remove Image">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
-                        <div class="col-lg-9">
-                            <input type="text" id="name"
-                                   class="form-control form-control-solid @error('name')  is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}"
-                                   placeholder="name..." />
-                            @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                        <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
-                        <div class="col-lg-9">
-                            <input type="email" id="email"
-                                   class="form-control form-control-solid @error('email')  is-invalid @enderror"
-                                   name="email" value="{{ old('email') }}"
-                                   placeholder="email..." />
-                            @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row ">
-                            <label class="col-form-label col-lg-3">{{ __('Mobile') }}</label>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Name') }}</label>
                             <div class="col-lg-9">
-                                <input type="tel" id="mobile"
-                                       class="form-control form-control-solid @error('mobile')  is-invalid @enderror"
-                                       name="mobile" value="{{ old('mobile') }}"
-                                       placeholder="mobile..."/>
-                                @error('mobile')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                <input type="text" id="name"
+                                    class="form-control form-control-solid @error('name')  is-invalid @enderror"
+                                    name="name" value="{{ old('name') }}" placeholder="name..." />
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
                         <div class="form-group row ">
-                                <label class="col-form-label col-lg-3">{{ __('Gender') }}</label>
-                                <div class="col-lg-9">
-                                    <select name="gender" id="gender"
-                                            class="form-control form-control-solid">
-                                        <option value="m" name="gender">Male</option>
-                                        <option value="f" name="gender">Female</option>
-                                    </select>
-                                </div>
+                            <label class="col-form-label col-lg-3">{{ __('Email') }}</label>
+                            <div class="col-lg-9">
+                                <input type="email" id="email"
+                                    class="form-control form-control-solid @error('email')  is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" placeholder="email..." />
+                                @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Mobile') }}</label>
+                            <div class="col-lg-9">
+                                <input type="tel" id="mobile"
+                                    class="form-control form-control-solid @error('mobile')  is-invalid @enderror"
+                                    name="mobile" value="{{ old('mobile') }}" placeholder="mobile..." />
+                                @error('mobile')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="form-group row ">
-                                <label class="col-form-label col-lg-3">{{ __('Status') }}</label>
-                                <div class="col-lg-9">
-                                    <select name="status" id="status"
-                                            class="form-control form-control-solid">
-                                        <option value="sick" name="status">Sick</option>
-                                        <option value="unsick" name="status">Unsick</option>
-                                    </select>
-                                </div>
+                            <label class="col-form-label col-lg-3">{{ __('Gender') }}</label>
+                            <div class="col-lg-9">
+                                <select name="gender" id="gender" class="form-control form-control-solid">
+                                    <option value="m" name="gender">Male</option>
+                                    <option value="f" name="gender">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label class="col-form-label col-lg-3">{{ __('Status') }}</label>
+                            <div class="col-lg-9">
+                                <select name="status" id="status" class="form-control form-control-solid">
+                                    <option value="sick" name="status">Sick</option>
+                                    <option value="unsick" name="status">Unsick</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group row ">
                             <label class="col-form-label col-lg-3">{{ __('Birthday') }}</label>
                             <div class="col-lg-9">
                                 <input type="date" id="birthday"
-                                       class="form-control form-control-solid @error('birthday')  is-invalid @enderror"
-                                       name="birthday" value="{{ old('birthday') }}"
-                                       placeholder="birthday..."/>
+                                    class="form-control form-control-solid @error('birthday')  is-invalid @enderror"
+                                    name="birthday" value="{{ old('birthday') }}" placeholder="birthday..." />
                                 @error('birthday')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-3 col-form-label">{{ __('Diseases') }}</label>
-                           <div class="col-9 col-form-label">
+                            <div class="col-9 col-form-label">
                                 <div class="checkbox-inline" id="diseases">
                                     <label class="checkbox checkbox-outline checkbox-success">
-                                        <input type="checkbox" name="diseases[]" value="nose_and_throttle"/>
+                                        <input type="checkbox" name="diseases[]" value="nose_and_throttle" />
                                         <span></span>
                                         Nose and throttle
                                     </label>
                                     <label class="checkbox checkbox-outline checkbox-success">
-                                        <input type="checkbox" name="diseases[]" value="heart_and_blood_circulation"/>
+                                        <input type="checkbox" name="diseases[]" value="heart_and_blood_circulation" />
                                         <span></span>
                                         Heart and blood circulation
                                     </label>
 
                                     <label class="checkbox checkbox-outline checkbox-success">
-                                        <input type="checkbox" name="diseases[]" value="blood_diseases"/>
+                                        <input type="checkbox" name="diseases[]" value="blood_diseases" />
                                         <span></span>
                                         Blood diseases
                                     </label>
                                     <label class="checkbox checkbox-outline checkbox-success">
-                                        <input type="checkbox" name="diseases[]" value="bones"/>
+                                        <input type="checkbox" name="diseases[]" value="bones" />
                                         <span></span>
                                         Bones
                                     </label>
 
                                     <label class="checkbox checkbox-outline checkbox-success">
-                                        <input type="checkbox" name="diseases[]" value="chronic_diseases"/>
+                                        <input type="checkbox" name="diseases[]" value="chronic_diseases" />
                                         <span></span>
                                         Chronic diseases
                                     </label>
                                     <label class="checkbox checkbox-outline checkbox-success">
-                                        <input type="checkbox" name="diseases[]" value="other"/>
+                                        <input type="checkbox" name="diseases[]" value="other" />
                                         <span></span>
                                         Other
                                     </label>
                                 </div>
-                           </div>
+                            </div>
                         </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="EditUser">Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="EditUser">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
     {{-- End Edit Modal   --}}
-
-
-
-
 @endsection
 
 {{-- @push('scripts')

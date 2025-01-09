@@ -14,11 +14,13 @@ class HomeController extends Controller
     public function index(){
         $doctors = Admin::where('type', 'doctor')->get();
         $news = News::latest()->get();
+        $messages = Message::where('user_id', Auth::user()->id)->get();
+
 
             return view('web.index', [
                 'doctors' => $doctors,
                 'news' => $news,
-                'messages' => Message::where('user_id', Auth::user()->id)->get()
+                'messages' => $messages
             ]);
     }
 }

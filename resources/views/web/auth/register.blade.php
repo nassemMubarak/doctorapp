@@ -264,9 +264,9 @@
 
 
 
-    <div id="form-doctor" style="display: none;">
-        <h4 class="mb-5">Doctor Registration</h4>
-        <form class="row" action="{{ route('admin.register') }}" method="post"
+                        <div id="form-doctor" style="display: none;">
+                            <h4 class="mb-5">Doctor Registration</h4>
+                            <form class="row" action="{{ route('admin.register') }}" method="post"
                                 style="padding: 42px; border: 1px solid #e6e6e6; border-radius: 4px; background-color: #fff; -webkit-box-shadow: 0px 5px 40px #00000008; box-shadow: 0px 5px 40px #00000008;"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -354,8 +354,8 @@
                                             here </a>
 
                                 </div>
-        </form>
-    </div>
+                            </form>
+                        </div>
 
 
 

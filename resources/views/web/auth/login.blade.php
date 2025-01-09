@@ -144,102 +144,116 @@
                         <br>
                         <!-- Patient Registration Form -->
                         @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    
-                    <!-- Error Message -->
-                    @if ($errors->has('error'))
-                        <div class="alert alert-danger">
-                            {{ $errors->first('error') }}
-                        </div>
-                    @endif
-                
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        <!-- Error Message -->
+                        @if ($errors->has('error'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('error') }}
+                            </div>
+                        @endif
+
                         <div id="form-patient" style="display: block;">
-                            <form class="card login-form"  action="{{ route('login') }}" method="post">
+                            <form class="card login-form" action="{{ route('login') }}" method="post">
                                 @csrf
                                 <div class="card-body">
                                     <div class="title">
                                         <h3>Sign In To Patient</h3>
-                                        <p>Please enter the following data so you can login to your account and start your medical journey with us today!                                    .</p>
+                                        <p>Please enter the following data so you can login to your account and start
+                                            your medical journey with us today! .</p>
                                     </div>
-                                    
+
                                     <div class="form-group input-group">
                                         <label for="email">Email</label>
-                                        <input class="form-control" id="email"     class="@error('email')  is-invalid @enderror" type="email" name="email"
-                                        value="{{ old('email') }}">
+                                        <input class="form-control" id="email"
+                                            class="@error('email')  is-invalid @enderror" type="email" name="email"
+                                            value="{{ old('email') }}">
                                         @error('email')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-        
+
                                     </div>
                                     <div class="form-group input-group">
                                         <label for="password">Password</label>
-                                        <input class="form-control"  id="password"  class="@error('password')  is-invalid @enderror" type="password" name="password">
+                                        <input class="form-control" id="password"
+                                            class="@error('password')  is-invalid @enderror" type="password"
+                                            name="password">
                                         @error('password')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-        
+
                                     </div>
                                     <div class="d-flex flex-wrap justify-content-between bottom-content">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input width-auto" id="exampleCheck1">
+                                            <input type="checkbox" class="form-check-input width-auto"
+                                                id="exampleCheck1">
                                             <label class="form-check-label">Remember me</label>
                                         </div>
                                         @if (Route::has('password.request'))
-                                        <a class="lost-pass" href="{{ route('password.request') }}" >Forgot password?</a>
+                                            <a class="lost-pass" href="{{ route('password.request') }}">Forgot
+                                                password?</a>
                                         @endif
                                     </div>
                                     <div class="button">
                                         <button class="btn" type="submit">Login</button>
                                     </div>
-                                    <p class="outer-link">Don't have an account? <a href="{{ route('register')}}">Register here </a>
+                                    <p class="outer-link">Don't have an account? <a
+                                            href="{{ route('register') }}">Register here </a>
                                     </p>
                                 </div>
                             </form>
                         </div>
 
-                        
+
                         <div id="form-doctor" style="display: none;">
-                            <form class="card login-form"  action="{{ route('admin.login') }}" method="post">
+                            <form class="card login-form" action="{{ route('admin.login') }}" method="post">
                                 @csrf
                                 <div class="card-body">
                                     <div class="title">
                                         <h3>Sign In To Doctore</h3>
-                                        <p>Please enter the following data so you can login to your account and start your medical journey with us today!                                    .</p>
+                                        <p>Please enter the following data so you can login to your account and start
+                                            your medical journey with us today! .</p>
                                     </div>
-                                    
+
                                     <div class="form-group input-group">
                                         <label for="email">Email</label>
-                                        <input class="form-control" id="email"     class="@error('email')  is-invalid @enderror" type="email" name="email"
-                                        value="{{ old('email') }}">
+                                        <input class="form-control" id="email"
+                                            class="@error('email')  is-invalid @enderror" type="email" name="email"
+                                            value="{{ old('email') }}">
                                         @error('email')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-        
+
                                     </div>
                                     <div class="form-group input-group">
                                         <label for="password">Password</label>
-                                        <input class="form-control"  id="password"  class="@error('password')  is-invalid @enderror" type="password" name="password">
+                                        <input class="form-control" id="password"
+                                            class="@error('password')  is-invalid @enderror" type="password"
+                                            name="password">
                                         @error('password')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-        
+
                                     </div>
                                     <div class="d-flex flex-wrap justify-content-between bottom-content">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input width-auto" id="exampleCheck1">
+                                            <input type="checkbox" class="form-check-input width-auto"
+                                                id="exampleCheck1">
                                             <label class="form-check-label">Remember me</label>
                                         </div>
                                         @if (Route::has('password.request'))
-                                        <a class="lost-pass" href="{{ route('password.request') }}" >Forgot password?</a>
+                                            <a class="lost-pass" href="{{ route('password.request') }}">Forgot
+                                                password?</a>
                                         @endif
                                     </div>
                                     <div class="button">
                                         <button class="btn" type="submit">Login</button>
                                     </div>
-                                    <p class="outer-link">Don't have an account? <a href="{{ route('register')}}">Register here </a>
+                                    <p class="outer-link">Don't have an account? <a
+                                            href="{{ route('register') }}">Register here </a>
                                     </p>
                                 </div>
                             </form>
@@ -248,7 +262,7 @@
 
 
 
-                    {{-- <form action="{{ route('login') }}" method="post">
+                        {{-- <form action="{{ route('login') }}" method="post">
                         @csrf
                         <div class="input">
                             <div>
@@ -281,7 +295,7 @@
                     </form> --}}
 
 
-                    {{-- <form class="card login-form"  action="{{ route('login') }}" method="post">
+                        {{-- <form class="card login-form"  action="{{ route('login') }}" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="title">
@@ -322,36 +336,36 @@
                             </p>
                         </div>
                     </form> --}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        document.getElementById('btn-patient').addEventListener('click', function () {
-            document.getElementById('form-patient').style.display = 'block';
-            document.getElementById('form-doctor').style.display = 'none';
-        });
-    
-        document.getElementById('btn-doctor').addEventListener('click', function () {
-            document.getElementById('form-patient').style.display = 'none';
-            document.getElementById('form-doctor').style.display = 'block';
-        });
-    </script>
-    
-      
+        <script>
+            document.getElementById('btn-patient').addEventListener('click', function() {
+                document.getElementById('form-patient').style.display = 'block';
+                document.getElementById('form-doctor').style.display = 'none';
+            });
 
-    
+            document.getElementById('btn-doctor').addEventListener('click', function() {
+                document.getElementById('form-patient').style.display = 'none';
+                document.getElementById('form-doctor').style.display = 'block';
+            });
+        </script>
 
 
-    <a href="#" class="scroll-top">
-        <i class="lni lni-chevron-up"></i>
-    </a>
 
-    <script src="{{ asset('assets/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/assets/js/tiny-slider.js') }}"></script>
-    <script src="{{ asset('assets/assets/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/assets/js/main.js') }}"></script>
+
+
+
+        <a href="#" class="scroll-top">
+            <i class="lni lni-chevron-up"></i>
+        </a>
+
+        <script src="{{ asset('assets/assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/assets/js/tiny-slider.js') }}"></script>
+        <script src="{{ asset('assets/assets/js/glightbox.min.js') }}"></script>
+        <script src="{{ asset('assets/assets/js/main.js') }}"></script>
 </body>
 
 </html>

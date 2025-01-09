@@ -1,4 +1,3 @@
-
 <!-- start header -->
 @include('web.headersection')
 <!-- end header -->
@@ -187,7 +186,7 @@
                     <i class="fa-solid fa-chevron-up i"></i>
                     <select name="doctor_id" required>
                         <option value="" disabled selected hidden>Doctor</option>
-                        @foreach($doctors as $doctor)
+                        @foreach ($doctors as $doctor)
                         <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                         @endforeach
                     </select>
@@ -202,19 +201,19 @@
 </div> --}}
 
 
- 
+
 
 
 
 <!-- end book an appontment  -->
- 
+
 {{-- <!-- start news -->
 <div class="news">
     <div class="container">
         <p>Better information, Better health</p>
         <h2>News</h2>
         <div class="new">
-            @foreach($newses as $news)
+            @foreach ($newses as $news)
             <a href="{{ route('news.show', $news->id) }}">
                 <div class="box" id="1">
                     <img src="{{ $news->image_path }}" alt="">
@@ -235,8 +234,9 @@
 </div> --}}
 <!-- end news -->
 
- 
-<!-- end contact --> 
+
+<!-- end
+-->
 
 
 
@@ -245,16 +245,20 @@
 <section class="slider-area">
     <div class="slider-active">
         <div class="single-slider">
-            <div class="slider-image bg_cover" data-overlay="4" data-animation="kenburns" style="background-image: url(assets/images/slider/s-1.jpg)"></div>
+            <div class="slider-image bg_cover" data-overlay="4" data-animation="kenburns"
+                style="background-image: url(assets/images/slider/s-1.jpg)"></div>
 
             <div class="slider-content">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10">
                             <div class="content overflow-hidden">
-                                <h5 class="slider-sub-title sub-title" data-animation="fadeInUp" data-delay="0.5s">Bootstrap 4 Based</h5>
-                                <h1 class="slider-title title" data-animation="fadeInUp" data-delay="1s">Medical & Healthcare Template</h1>
-                                <a class="main-btn" href="#" data-animation="fadeInLeft" data-delay="1.5s">read more</a>
+                                <h5 class="slider-sub-title sub-title" data-animation="fadeInUp" data-delay="0.5s">
+                                    Bootstrap 4 Based</h5>
+                                <h1 class="slider-title title" data-animation="fadeInUp" data-delay="1s">Medical &
+                                    Healthcare Template</h1>
+                                <a class="main-btn" href="#" data-animation="fadeInLeft" data-delay="1.5s">read
+                                    more</a>
                             </div>
                         </div>
                     </div> <!-- row -->
@@ -263,16 +267,20 @@
         </div> <!-- single slider -->
 
         <div class="single-slider">
-            <div class="slider-image bg_cover" data-overlay="4" data-animation="kenburns" style="background-image: url(assets/images/slider/s-2.jpg)"></div>
+            <div class="slider-image bg_cover" data-overlay="4" data-animation="kenburns"
+                style="background-image: url(assets/images/slider/s-2.jpg)"></div>
 
             <div class="slider-content">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10">
                             <div class="content overflow-hidden">
-                                <h5 class="slider-sub-title sub-title" data-animation="fadeInUp" data-delay="0.5s">Multipurpose Template</h5>
-                                <h1 class="slider-title title" data-animation="fadeInUp" data-delay="1s">Clean Design and </br>Responsive Layout</h1>
-                                <a class="main-btn" href="#" data-animation="fadeInLeft" data-delay="1.5s">read more</a>
+                                <h5 class="slider-sub-title sub-title" data-animation="fadeInUp" data-delay="0.5s">
+                                    Multipurpose Template</h5>
+                                <h1 class="slider-title title" data-animation="fadeInUp" data-delay="1s">Clean Design
+                                    and </br>Responsive Layout</h1>
+                                <a class="main-btn" href="#" data-animation="fadeInLeft" data-delay="1.5s">read
+                                    more</a>
                             </div>
                         </div>
                     </div> <!-- row -->
@@ -281,16 +289,20 @@
         </div> <!-- single slider -->
 
         <div class="single-slider">
-            <div class="slider-image bg_cover" data-overlay="4" data-animation="kenburns" style="background-image: url(assets/images/slider/s-3.jpg)"></div>
+            <div class="slider-image bg_cover" data-overlay="4" data-animation="kenburns"
+                style="background-image: url(assets/images/slider/s-3.jpg)"></div>
 
             <div class="slider-content">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10">
                             <div class="content overflow-hidden">
-                                <h5 class="slider-sub-title sub-title" data-animation="fadeInUp" data-delay="0.5s">All Essential</h5>
-                                <h1 class="slider-title title" data-animation="fadeInUp" data-delay="1s">Pages and Features</br>for Medical Sites</h1>
-                                <a class="main-btn" href="#" data-animation="fadeInLeft" data-delay="1.5s">read more</a>
+                                <h5 class="slider-sub-title sub-title" data-animation="fadeInUp" data-delay="0.5s">All
+                                    Essential</h5>
+                                <h1 class="slider-title title" data-animation="fadeInUp" data-delay="1s">Pages and
+                                    Features</br>for Medical Sites</h1>
+                                <a class="main-btn" href="#" data-animation="fadeInLeft" data-delay="1.5s">read
+                                    more</a>
                             </div>
                         </div>
                     </div> <!-- row -->
@@ -302,34 +314,49 @@
 
 
 <div class="book-appointment py-5">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <!-- Error Message -->
+    @if ($errors->has('error'))
+        <div class="alert alert-danger">
+            {{ $errors->first('error') }}
+        </div>
+    @endif
+
     <div class="container">
         <div class="row g-5 align-items-center">
-            <!-- Left Side Text Section -->            
+            <!-- Left Side Text Section -->
             <!-- Right Side Form Section -->
             <div class="col-md-12">
                 <div class="card shadow-lg p-4">
-                    <h3 class="text-center text-secondary mb-4">Contact a Doctor</h3>
+                    <h3 class="text-center text-secondary mb-4"></h3>
                     <form action="{{ route('messages.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <!-- Name -->
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name }}" readonly>
+                            <input type="text" id="name" name="name" class="form-control"
+                                value="{{ Auth::user()->name }}" readonly>
                         </div>
                         <!-- Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" value="{{ Auth::user()->email }}" readonly>
+                            <input type="email" id="email" name="email" class="form-control"
+                                value="{{ Auth::user()->email }}" readonly>
                         </div>
                         <!-- Phone -->
-                         <!-- Hidden User ID -->
+                        <!-- Hidden User ID -->
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <!-- Doctor Selection -->
                         <div class="mb-3">
                             <label for="doctor_id" class="form-label">Select Doctor</label>
                             <select id="doctor_id" name="doctor_id" class="form-select" required>
                                 <option value="" disabled selected hidden>Choose a doctor...</option>
-                                @foreach($doctors as $doctor)
+                                @foreach ($doctors as $doctor)
                                     <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
                                 @endforeach
                             </select>
@@ -337,7 +364,8 @@
                         <!-- Message -->
                         <div class="mb-3">
                             <label for="message" class="form-label">Message</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Write your message here..." maxlength="100" rows="3" required></textarea>
+                            <textarea id="message" name="message" class="form-control" placeholder="Write your message here..."
+                                maxlength="100" rows="3" required></textarea>
                         </div>
                         <!-- File Upload -->
                         <div class="mb-3">
@@ -352,18 +380,6 @@
         </div>
     </div>
 </div>
-@if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
-
-<!-- Error Message -->
-@if ($errors->has('error'))
-<div class="alert alert-danger">
-    {{ $errors->first('error') }}
-</div>
-@endif
 
 
 <div class="container mt-5">
@@ -384,25 +400,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($messages as $message)
+                    @foreach ($messages as $message)
                         <tr>
                             <td>{{ $message->doctor->name }}</td>
-                            <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('l d, F Y') }}</td>
-                            <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('h:i A') }}</td>
+                            <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('l d, F Y') }}
+                            </td>
+                            <td>{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $message->created_at)->format('h:i A') }}
+                            </td>
                             <td>{{ $message->message }}</td>
                             <td>
-                                @if($message->patient_file_path)
+                                @if ($message->patient_file_path)
                                     <a href="{{ $message->patient_file_path }}" download>
                                         Download File
                                     </a>
                                 @else
                                     No file available
                                 @endif
-                                </td>
+                            </td>
                             <td>{{ $message->replay }}</td>
                             <td>
-                                @if($message->doctor_prescription != null)
-                                    <a href="{{ $message->doctor_file_path }}" class="btn btn-sm btn-outline-primary" download>
+                                @if ($message->doctor_prescription != null)
+                                    <a href="{{ $message->doctor_file_path }}" class="btn btn-sm btn-outline-primary"
+                                        download>
                                         Download
                                     </a>
                                 @endif
@@ -427,7 +446,7 @@
 
 
 <!--====== SLIDER PART ENDS ======-->
- 
+
 
 <!--====== FEATURES PART START ======-->
 
@@ -441,7 +460,8 @@
                     </div>
                     <div class="features-content">
                         <h4 class="features-title"><a href="#">Advanced Care</a></h4>
-                        <p class="text">The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+                        <p class="text">The point of using Lorem Ipsum is that it has a more-or-less normal
+                            distribution of letters, as opposed to using.</p>
                         <a class="more" href="#">Read More <i class="lni-chevron-right"></i></a>
                     </div>
                 </div> <!-- single features -->
@@ -453,7 +473,8 @@
                     </div>
                     <div class="features-content">
                         <h4 class="features-title"><a href="#">Locations & Directions</a></h4>
-                        <p class="text">The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+                        <p class="text">The point of using Lorem Ipsum is that it has a more-or-less normal
+                            distribution of letters, as opposed to using.</p>
                         <a class="more" href="#">Read More <i class="lni-chevron-right"></i></a>
                     </div>
                 </div> <!-- single features -->
@@ -465,7 +486,8 @@
                     </div>
                     <div class="features-content">
                         <h4 class="features-title"><a href="#">Quality & Patient Safety</a></h4>
-                        <p class="text">The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+                        <p class="text">The point of using Lorem Ipsum is that it has a more-or-less normal
+                            distribution of letters, as opposed to using.</p>
                         <a class="more" href="#">Read More <i class="lni-chevron-right"></i></a>
                     </div>
                 </div> <!-- single features -->
@@ -483,7 +505,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-image mt-50">
-                    <img src="{{ asset('assets_medical/Blackdoctors 1.png')}}" alt="about">
+                    <img src="{{ asset('assets_medical/Blackdoctors 1.png') }}" alt="about">
                 </div> <!-- about-image -->
             </div>
             <div class="col-lg-6">
@@ -497,7 +519,7 @@
                         information on a wide range of health topics, from preventive care to complex
                         medical conditions. Our goal is to provide you with the resources and tools you
                         need to make informed decisions about your health and well-being..</p>
-                 </div> <!-- about-content -->
+                </div> <!-- about-content -->
             </div>
         </div> <!-- row -->
     </div> <!-- container -->
@@ -518,19 +540,22 @@
             </div>
         </div> <!-- row -->
         <div class="row">
-            @foreach($doctors as $doctor)
-            <div class="col-lg-4 col-md-6">
-                <div class="single-department-two mt-30">
-                    <div class="department-thumb">
-                        <a href="{{ route('doctors.show', $doctor->id) }}"><img style="max-height: 200px;" src="{{ $doctor->image_path }}" alt="department"></a>
-                    </div>
-                    <div class="department-content text-center">
-                        <h4 class="department-title"><a href="{{ route('doctors.show', $doctor->id) }}">Dr . {{ $doctor->name }}</a></h4>
-                        <p class="text">{{ $doctor->specialization }}.</p>
-                        <a class="main-btn main-btn-2" href="{{ route('doctors.show', $doctor->id) }}">View Profile</a>
-                    </div>
-                </div> <!-- single department two -->
-            </div>
+            @foreach ($doctors as $doctor)
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-department-two mt-30">
+                        <div class="department-thumb">
+                            <a href="{{ route('doctors.show', $doctor->id) }}"><img style="max-height: 200px;"
+                                    src="{{ $doctor->image_path }}" alt="department"></a>
+                        </div>
+                        <div class="department-content text-center">
+                            <h4 class="department-title"><a href="{{ route('doctors.show', $doctor->id) }}">Dr .
+                                    {{ $doctor->name }}</a></h4>
+                            <p class="text">{{ $doctor->specialization }}.</p>
+                            <a class="main-btn main-btn-2" href="{{ route('doctors.show', $doctor->id) }}">View
+                                Profile</a>
+                        </div>
+                    </div> <!-- single department two -->
+                </div>
             @endforeach
 
         </div> <!-- row -->
@@ -550,7 +575,8 @@
                 <div class="call-action d-lg-flex justify-content-between align-items-center">
                     <div class="action-content">
                         <h3 class="action-title">You are Using Free Lite Version of Medical</h3>
-                        <p class="text">Please purchase full version of the template to get all pages and enjoy all features.</p>
+                        <p class="text">Please purchase full version of the template to get all pages and enjoy all
+                            features.</p>
                     </div> <!-- action content -->
                     <div class="action-btn">
                         <a class="main-btn" href="https://rebrand.ly/medical-gg" rel="nofollow">Purchase Now</a>
@@ -581,7 +607,9 @@
                     <div class="single-testimonial-two mt-60">
                         <div class="testimonial-content">
                             <i class="lni-quotation"></i>
-                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis turpis vitae tortor convallis eleifend. In volutpat maximus mauris non fringilla. Cras pulvinar aliquam massa nec lacinia.</p>
+                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+                                quis turpis vitae tortor convallis eleifend. In volutpat maximus mauris non fringilla.
+                                Cras pulvinar aliquam massa nec lacinia.</p>
                             <h5 class="testimonial-name">Mohammad Mostofa</h5>
                             <span>- Random Customer</span>
                         </div> <!-- testimonial content -->
@@ -592,7 +620,9 @@
                     <div class="single-testimonial-two mt-60">
                         <div class="testimonial-content">
                             <i class="lni-quotation"></i>
-                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis turpis vitae tortor convallis eleifend. In volutpat maximus mauris non fringilla. Cras pulvinar aliquam massa nec lacinia.</p>
+                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+                                quis turpis vitae tortor convallis eleifend. In volutpat maximus mauris non fringilla.
+                                Cras pulvinar aliquam massa nec lacinia.</p>
                             <h5 class="testimonial-name">Bobby Akter</h5>
                             <span>- Random Customer</span>
                         </div> <!-- testimonial content -->
@@ -603,7 +633,9 @@
                     <div class="single-testimonial-two mt-60">
                         <div class="testimonial-content">
                             <i class="lni-quotation"></i>
-                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis turpis vitae tortor convallis eleifend. In volutpat maximus mauris non fringilla. Cras pulvinar aliquam massa nec lacinia.</p>
+                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+                                quis turpis vitae tortor convallis eleifend. In volutpat maximus mauris non fringilla.
+                                Cras pulvinar aliquam massa nec lacinia.</p>
                             <h5 class="testimonial-name">Humayun Ahmed</h5>
                             <span>- Random Customer</span>
                         </div> <!-- testimonial content -->
@@ -632,19 +664,24 @@
             </div>
             <div class="col-lg-8">
                 <div class="row blog-tow-active pt-20">
-                    @foreach($news as $news_item)
-                    <div class="col-lg-6">
-                        <div class="single-blog mt-30 mb-30">
-                            <div class="blog-thumb">
-                                <a href="{{ route('news.show', $news_item->id) }}"><img style="max-height: 200px; min-height: 200px" src="{{ $news_item->image_path }}" alt="Blog"></a>
-                            </div>
-                            <div class="blog-content">
-                                <h6 class="sub-title">{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $news_item->created_at)->format('l d, F Y') }} | By {{ $news_item->admin->name }}</h6>
-                                <h3 class="title"><a href="#">{{ $news_item->title }}/a></h3>
-                                <a class="more" href="{{ route('news.show', $news_item->id) }}">Read More <i class="lni-chevron-right"></i></a>
-                            </div>
-                        </div> <!-- single blog -->
-                    </div>
+                    @foreach ($news as $news_item)
+                        <div class="col-lg-6">
+                            <div class="single-blog mt-30 mb-30">
+                                <div class="blog-thumb">
+                                    <a href="{{ route('news.show', $news_item->id) }}"><img
+                                            style="max-height: 200px; min-height: 200px"
+                                            src="{{ $news_item->image_path }}" alt="Blog"></a>
+                                </div>
+                                <div class="blog-content">
+                                    <h6 class="sub-title">
+                                        {{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $news_item->created_at)->format('l d, F Y') }}
+                                        | By {{ $news_item->admin->name }}</h6>
+                                    <h3 class="title"><a href="#">{{ $news_item->title }}/a></h3>
+                                    <a class="more" href="{{ route('news.show', $news_item->id) }}">Read More <i
+                                            class="lni-chevron-right"></i></a>
+                                </div>
+                            </div> <!-- single blog -->
+                        </div>
                     @endforeach
                 </div> <!-- blog-tow-active -->
             </div>
@@ -662,4 +699,3 @@
 <!-- start footer -->
 @include('web.footersection')
 <!-- end footer -->
-
